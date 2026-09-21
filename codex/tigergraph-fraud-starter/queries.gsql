@@ -1,0 +1,55 @@
+/* Install after schema and data load: INSTALL QUERY <query_name> */
+USE GRAPH FraudInvestigation;
+
+/* 1. Exact alert context: start every investigation with this query. */
+CREATE QUERY alert_context(STRING txn_id) FOR GRAPH FraudInvestigation {
+  Seed = {Transaction(txn_id)};
+  Cards = SELECT c FROM Seed:t <- (MADE:e) - Card:c;
+  Customers = SELECT u FROM Cards:c <- (OWNS:e) - Customer:u;
+  Devices = SELECT d FROM Seed:t - (FROM_DEVICE:e) -> DeviceProfile:d;
+  Regions = SELECT r FROM Seed:t - (BILLED_IN:e) -> BillingRegion:r;
+  Domains = SELECT d FROM Seed:t - (PURCHASER_EMAIL|RECIPIENT_EMAIL:e) -> EmailDomain:d;
+  PRINT Seed AS flagged_transaction, Cards AS card, Customers AS customer,
+        Devices AS device_profiles, Regions AS billing_regions, Domains AS email_domains;
+}
+
+/* 2. Full card history. Client/agent narrows the returned timestamps to its window. */
+CREATE QUERY card_history(STRING card_id) FOR GRAPH FraudInvestigation {
+  Seed = {Card(card_id)};
+  Transactions = SELECT t FROM Seed:c - (MADE:e) -> Transaction:t;
+  Previous = SELECT p FROM Transactions:t <- (NEXT:e) - Transaction:p;
+  Following = SELECT n FROM Transactions:t - (NEXT:e) -> Transaction:n;
+  PRINT Seed AS card, Transactions AS transactions, Previous AS preceding_transactions,
+        Following AS following_transactions;
+}
+
+/* 3. Find other cards using a device profile, with their closed-case evidence. */
+CREATE QUERY device_connected_cards(STRING device_id) FOR GRAPH FraudInvestigation {
+  Seed = {DeviceProfile(device_id)};
+  Transactions = SELECT t FROM Seed:d <- (FROM_DEVICE:e) - Transaction:t;
+  Cards = SELECT c FROM Transactions:t <- (MADE:e) - Card:c;
+  Cases = SELECT cc FROM Transactions:t <- (INVOLVES:e) - ClosedCase:cc;
+  PRINT Seed AS device_profile, Cards AS connected_cards,
+        Transactions AS device_transactions, Cases AS closed_cases;
+}
+
+/* 4. Find every card and transaction using a billing region. */
+CREATE QUERY region_connected_cards(STRING region_id) FOR GRAPH FraudInvestigation {
+  Seed = {BillingRegion(region_id)};
+  Transactions = SELECT t FROM Seed:r <- (BILLED_IN:e) - Transaction:t;
+  Cards = SELECT c FROM Transactions:t <- (MADE:e) - Card:c;
+  Cases = SELECT cc FROM Transactions:t <- (INVOLVES:e) - ClosedCase:cc;
+  PRINT Seed AS billing_region, Cards AS connected_cards,
+        Transactions AS region_transactions, Cases AS closed_cases;
+}
+
+/* 5. Retrieve labelled history from the same card or device. Compare outcomes; do not
+      treat a confirmed historical case as an automatic verdict for this one. */
+CREATE QUERY similar_closed_cases(STRING card_id, STRING device_id) FOR GRAPH FraudInvestigation {
+  CardSeed = {Card(card_id)};
+  DeviceSeed = {DeviceProfile(device_id)};
+  CardCases = SELECT cc FROM CardSeed:c <- (ON_CARD|CONNECTED_TO:e) - ClosedCase:cc;
+  DeviceTxns = SELECT t FROM DeviceSeed:d <- (FROM_DEVICE:e) - Transaction:t;
+  DeviceCases = SELECT cc FROM DeviceTxns:t <- (INVOLVES:e) - ClosedCase:cc;
+  PRINT CardCases AS cases_sharing_card, DeviceCases AS cases_sharing_device;
+}

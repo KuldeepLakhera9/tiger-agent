@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+**/__pycache__/
+data/transactions.csv
+prepared/transactions.csv
+prepared/identity.csv

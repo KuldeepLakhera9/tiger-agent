@@ -1,0 +1,122 @@
+{
+  "case": {
+    "case_id": "HHG-002",
+    "opened_at": "2016-11-22 23:27:07",
+    "trigger_type": "risk_score",
+    "trigger_text": "Real-time model scored transaction 3478782 ($292.36, online) at 0.79. Review and decide.",
+    "flagged_txn_id": "3478782",
+    "card_id": "C11891-K1",
+    "customer_id": "C11891",
+    "risk_score": "0.79"
+  },
+  "card_mapping": {
+    "card_id": "C11891-K1",
+    "customer_id": "C11891",
+    "card_fingerprint": "18586|177.0|185.0|mastercard|195.0|credit",
+    "card4": "mastercard",
+    "card6": "credit",
+    "card_first_seen": "2016-07-03 19:00:17",
+    "card_last_seen": "2016-12-15 15:37:17",
+    "customer_first_seen": "2016-07-03 19:00:17",
+    "customer_last_seen": "2016-12-15 15:37:17"
+  },
+  "flagged_transaction": {
+    "TransactionID": "3478782",
+    "ts": "2016-11-22 17:27:07",
+    "TransactionDT": "12418027",
+    "TransactionAmt": "292.36",
+    "ProductCD": "C",
+    "channel": "online",
+    "risk_score": "0.79",
+    "addr1": "",
+    "addr2": "",
+    "P_emaildomain": "hotmail.com",
+    "R_emaildomain": "hotmail.com",
+    "card1": "18586",
+    "card2": "177.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "195.0",
+    "card6": "credit",
+    "M1": "",
+    "M2": "",
+    "M3": "",
+    "M4": "M2",
+    "M5": "",
+    "M6": "",
+    "M7": "",
+    "M8": "",
+    "M9": ""
+  },
+  "flagged_identity": {
+    "id_15": "",
+    "id_23": "",
+    "id_30": "",
+    "id_31": "",
+    "id_33": "",
+    "DeviceType": "",
+    "DeviceInfo": ""
+  },
+  "device_profile": " |  |  | ",
+  "card_history_summary": {
+    "n_transactions": 44,
+    "first_ts": "2016-07-03 19:00:17",
+    "last_ts": "2016-12-15 15:37:17",
+    "transactions_in_48h_of_alert": 1,
+    "previous_30d_count": 9,
+    "previous_30d_amount_mean": 46.36,
+    "previous_channels": {
+      "online": 35
+    },
+    "previous_regions": {
+      "": 34,
+      "375.0": 1
+    },
+    "previous_product_codes": {
+      "C": 35
+    },
+    "window_48h": [
+      {
+        "TransactionID": "3478782",
+        "ts": "2016-11-22 17:27:07",
+        "TransactionAmt": "292.36",
+        "ProductCD": "C",
+        "channel": "online",
+        "risk_score": "0.79",
+        "addr1": "",
+        "addr2": "",
+        "P_emaildomain": "hotmail.com",
+        "R_emaildomain": "hotmail.com",
+        "M1": "",
+        "M2": "",
+        "M3": "",
+        "M4": "M2",
+        "M5": "",
+        "M6": "",
+        "M7": "",
+        "M8": "",
+        "M9": ""
+      }
+    ]
+  },
+  "shared_device_summary": {
+    "n_transactions": 0,
+    "n_customers": 0,
+    "customer_ids": [],
+    "transactions": []
+  },
+  "similar_closed_cases": {
+    "same_card": [
+      {
+        "case_id": "CC-4160",
+        "outcome": "confirmed_fraud",
+        "pattern": "card_not_present_fraud",
+        "exposure_usd": "90.54",
+        "opened_at": "2016-09-30 08:59:51",
+        "closed_at": "2016-10-02 18:59:51",
+        "analyst_notes": "Case CC-4160: cardholder C11891 reported unrecognized activity on card C11891-K1. 1 transaction(s) between 2016-09-29 and 2016-09-29 totaling $90.54 were confirmed fraudulent. Online purchases inconsistent with the cardholder's usual merchants and amounts. Online transactions came from a MotoE2(4G-LTE on chrome generic. Card blocked and reissued. Customer reimbursed."
+      }
+    ],
+    "same_device": []
+  }
+}

@@ -1,0 +1,109 @@
+/* HHGOA Fraud Investigation graph -- run in GSQL */
+
+CREATE VERTEX Customer (
+  PRIMARY_ID customer_id STRING,
+  first_seen STRING,
+  last_seen STRING
+) WITH primary_id_as_attribute="true";
+
+CREATE VERTEX Card (
+  PRIMARY_ID card_id STRING,
+  customer_id STRING,
+  card_fingerprint STRING,
+  card_network STRING,
+  card_type STRING,
+  first_seen STRING,
+  last_seen STRING
+) WITH primary_id_as_attribute="true";
+
+CREATE VERTEX Transaction (
+  PRIMARY_ID txn_id STRING,
+  customer_id STRING,
+  card_id STRING,
+  ts STRING,
+  transaction_dt INT,
+  amount FLOAT,
+  risk_score FLOAT,
+  channel STRING,
+  product_code STRING,
+  billing_region STRING,
+  billing_country STRING,
+  purchaser_email_domain STRING,
+  recipient_email_domain STRING,
+  features_json STRING
+) WITH primary_id_as_attribute="true";
+
+CREATE VERTEX DeviceProfile (
+  PRIMARY_ID device_id STRING,
+  device_profile STRING,
+  device_info STRING,
+  os STRING,
+  browser STRING,
+  screen STRING,
+  device_type STRING,
+  device_status STRING,
+  proxy_status STRING,
+  features_json STRING
+) WITH primary_id_as_attribute="true";
+
+CREATE VERTEX BillingRegion (
+  PRIMARY_ID region_id STRING,
+  country_code STRING
+) WITH primary_id_as_attribute="true";
+
+CREATE VERTEX EmailDomain (
+  PRIMARY_ID domain STRING
+) WITH primary_id_as_attribute="true";
+
+CREATE VERTEX ClosedCase (
+  PRIMARY_ID case_id STRING,
+  customer_id STRING,
+  card_id STRING,
+  opened_at STRING,
+  closed_at STRING,
+  outcome STRING,
+  pattern STRING,
+  exposure_usd FLOAT,
+  actions_taken STRING,
+  report_filed BOOL,
+  analyst_notes STRING,
+  source_json STRING
+) WITH primary_id_as_attribute="true";
+
+CREATE VERTEX FraudCase (
+  PRIMARY_ID case_id STRING,
+  customer_id STRING,
+  card_id STRING,
+  flagged_txn_id STRING,
+  opened_at STRING,
+  trigger_type STRING,
+  trigger_text STRING,
+  trigger_risk_score FLOAT,
+  status STRING,
+  verdict STRING,
+  fraud_probability FLOAT,
+  pattern STRING,
+  exposure_usd FLOAT,
+  summary STRING,
+  written_to_graph BOOL,
+  evidence_json STRING,
+  recommendations_json STRING,
+  source_json STRING
+) WITH primary_id_as_attribute="true";
+
+CREATE DIRECTED EDGE OWNS (FROM Customer, TO Card);
+CREATE DIRECTED EDGE MADE (FROM Card, TO Transaction);
+CREATE DIRECTED EDGE FROM_DEVICE (FROM Transaction, TO DeviceProfile);
+CREATE DIRECTED EDGE BILLED_IN (FROM Transaction, TO BillingRegion);
+CREATE DIRECTED EDGE PURCHASER_EMAIL (FROM Transaction, TO EmailDomain);
+CREATE DIRECTED EDGE RECIPIENT_EMAIL (FROM Transaction, TO EmailDomain);
+CREATE DIRECTED EDGE NEXT (FROM Transaction, TO Transaction, gap_seconds INT);
+CREATE DIRECTED EDGE INVOLVES (FROM ClosedCase, TO Transaction);
+CREATE DIRECTED EDGE ON_CARD (FROM ClosedCase, TO Card);
+CREATE DIRECTED EDGE CONNECTED_TO (FROM ClosedCase, TO Card);
+CREATE DIRECTED EDGE INVESTIGATES (FROM FraudCase, TO Transaction);
+CREATE DIRECTED EDGE CASE_ON_CARD (FROM FraudCase, TO Card);
+CREATE DIRECTED EDGE CASE_LINKED_DEVICE (FROM FraudCase, TO DeviceProfile);
+CREATE DIRECTED EDGE CASE_LINKED_PRIOR (FROM FraudCase, TO ClosedCase);
+
+CREATE GRAPH FraudInvestigation (*);
