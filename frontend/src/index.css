@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    font-family: Inter, system-ui, sans-serif;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-brand-dark text-slate-200 antialiased overflow-hidden;
+    margin: 0;
+    min-width: 320px;
+  }
+
+  a {
+    @apply text-inherit no-underline;
+  }
+
+  button,
+  input {
+    font: inherit;
+  }
+}
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { @apply bg-brand-dark; }
+::-webkit-scrollbar-thumb { @apply bg-slate-700 rounded; }
+::-webkit-scrollbar-thumb:hover { @apply bg-slate-600; }
+
+@layer utilities {
+  .grid-noise {
+    background-image: linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+    background-size: 36px 36px;
+  }
+}
