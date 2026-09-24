@@ -5,10 +5,13 @@
   "description": "FRAUDGRAPH - Explainable fraud-investigation command center for TigerGraph × HHGoa 2026",
   "scripts": {
     "dev": "npm --prefix frontend run dev",
-    "build": "npm --prefix frontend run build",
+    "build": "npm --prefix frontend run build && cp -r frontend/dist ./dist",
     "preview": "npm --prefix frontend run preview",
     "backend": "python3 -m uvicorn backend.main:app --reload --port 8000",
     "validate": "python3 agent/validate_answers.py",
     "test": "python3 agent/validate_answers.py && PYTHONPATH=. python3 tests/test_hhg002_verification.py"
-  }
+  },
+  "workspaces": [
+    "frontend"
+  ]
 }
