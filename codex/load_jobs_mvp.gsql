@@ -1,0 +1,75 @@
+USE GRAPH FraudInvestigation;
+
+CREATE LOADING JOB load_fraud_data_mvp FOR GRAPH FraudInvestigation {
+  DEFINE FILENAME transactions;
+  DEFINE FILENAME cards;
+  DEFINE FILENAME identity;
+  DEFINE FILENAME regions;
+  DEFINE FILENAME emails;
+  DEFINE FILENAME next_txns;
+  DEFINE FILENAME closed_cases;
+  DEFINE FILENAME closed_case_txns;
+  DEFINE FILENAME closed_case_cards;
+  DEFINE FILENAME case_pack;
+
+  LOAD cards
+    TO VERTEX Customer VALUES ($1, $7, $8),
+    TO VERTEX Card VALUES ($0, $1, $2, $3, $4, $5, $6),
+    TO EDGE OWNS VALUES ($1, $0)
+    USING HEADER="true", SEPARATOR=",", QUOTE="double";
+
+  LOAD transactions
+    TO VERTEX Transaction VALUES ($0, $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13),
+    TO EDGE MADE VALUES ($2, $0)
+    USING HEADER="true", SEPARATOR=",", QUOTE="double";
+
+  LOAD identity
+    TO VERTEX DeviceProfile VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10),
+    TO EDGE FROM_DEVICE VALUES ($0, $1)
+    USING HEADER="true", SEPARATOR=",", QUOTE="double";
+
+  LOAD regions
+    TO VERTEX BillingRegion VALUES ($1, $2),
+    TO EDGE BILLED_IN VALUES ($0, $1)
+    USING HEADER="true", SEPARATOR=",", QUOTE="double";
+
+  LOAD emails
+    TO VERTEX EmailDomain VALUES ($1),
+    TO EDGE PURCHASER_EMAIL VALUES ($0, $1)
+    WHERE $2 == "purchaser"
+    USING HEADER="true", SEPARATOR=",", QUOTE="double";
+
+  LOAD emails
+    TO VERTEX EmailDomain VALUES ($1),
+    TO EDGE RECIPIENT_EMAIL VALUES ($0, $1)
+    WHERE $2 == "recipient"
+    USING HEADER="true", SEPARATOR=",", QUOTE="double";
+
+  LOAD next_txns
+    TO EDGE NEXT VALUES ($0, $1, $2)
+    USING HEADER="true", SEPARATOR=",", QUOTE="double";
+
+  LOAD closed_cases
+    TO VERTEX ClosedCase VALUES ($0, $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11),
+    USING HEADER="true", SEPARATOR=",", QUOTE="double";
+
+  LOAD closed_case_txns
+    TO EDGE INVOLVES VALUES ($0, $1)
+    USING HEADER="true", SEPARATOR=",", QUOTE="double";
+
+  LOAD closed_case_cards
+    TO EDGE ON_CARD VALUES ($0, $1)
+    WHERE $2 == "primary"
+    USING HEADER="true", SEPARATOR=",", QUOTE="double";
+
+  LOAD closed_case_cards
+    TO EDGE CONNECTED_TO VALUES ($0, $1)
+    WHERE $2 == "connected"
+    USING HEADER="true", SEPARATOR=",", QUOTE="double";
+
+  LOAD case_pack
+    TO VERTEX FraudCase VALUES ($0, $3, $2, $1, $4, $5, $6, $7, "open", "uncertain", 0.0, "none", 0.0, "", "false", "[]", "[]", $8),
+    TO EDGE INVESTIGATES VALUES ($0, $1),
+    TO EDGE CASE_ON_CARD VALUES ($0, $2)
+    USING HEADER="true", SEPARATOR=",", QUOTE="double";
+}
