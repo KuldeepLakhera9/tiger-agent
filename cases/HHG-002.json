@@ -1,0 +1,104 @@
+{
+  "case_id": "HHG-002",
+  "case": {
+    "status": "open",
+    "verdict": "uncertain",
+    "fraud_probability": 0.5,
+    "pattern": "card_not_present_fraud",
+    "pattern_description": "",
+    "affected_txn_ids": [
+      "3478782"
+    ],
+    "first_suspicious_txn_id": "3478782",
+    "connected_card_ids": [],
+    "connected_device_profiles": [],
+    "exposure_usd": 292.36,
+    "evidence": [
+      {
+        "claim": "Flagged transaction 3478782 is $292.36, online, risk score 0.79.",
+        "source": "graph",
+        "ref": "query:alert_context",
+        "entity_ids": [
+          "3478782",
+          "C11891-K1",
+          "C11891"
+        ]
+      },
+      {
+        "claim": "Card C11891-K1 has 44 indexed transactions in the retained history.",
+        "source": "graph",
+        "ref": "query:card_history",
+        "entity_ids": [
+          "C11891-K1"
+        ]
+      },
+      {
+        "claim": "Device evidence unavailable; no usable identity record is attached to the flagged transaction or affected sequence.",
+        "source": "graph",
+        "ref": "query:alert_context",
+        "entity_ids": [
+          "3478782"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4160 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4160"
+        ]
+      }
+    ],
+    "similar_prior_cases": [
+      "CC-4160"
+    ],
+    "summary": "HHG-002 is assessed as uncertain with probability 0.50. Pattern: card_not_present_fraud. Identified exposure is $292.36; device state is unavailable.",
+    "written_to_graph": false,
+    "graph_case_id": "",
+    "graph_write": {
+      "written": false,
+      "reason": "TigerGraph connection is not configured."
+    }
+  },
+  "evidence_requests": [
+    {
+      "type": "customer_validation",
+      "asked_after_step": 1,
+      "assumed_response": "No customer response is available in the benchmark; retain the uncertain decision."
+    }
+  ],
+  "next_best_actions": {
+    "initial": [
+      {
+        "action": "VERIFY_WITH_CUSTOMER",
+        "route": "auto",
+        "reason": "R1: evidence is not decisive and probability is below the blocking threshold."
+      }
+    ],
+    "final": [
+      {
+        "action": "VERIFY_WITH_CUSTOMER",
+        "route": "auto",
+        "reason": "R1: evidence is not decisive and probability is below the blocking threshold."
+      },
+      {
+        "action": "CREATE_CASE",
+        "route": "auto",
+        "reason": "A requested evidence step requires an internal case under policy 3a."
+      }
+    ],
+    "what_changed": "Final actions reflect the evidence request and policy case requirement; no response was assumed."
+  },
+  "sar": {
+    "file": false,
+    "reason": "No benchmark SAR trigger is supported by the retained evidence under the policy.",
+    "narrative": "",
+    "subjects": [],
+    "total_amount_usd": 0,
+    "activity_dates": []
+  },
+  "stop_reason": "Investigation reached an evidence dead end; no customer response or usable device evidence is available.",
+  "tool_calls": 5,
+  "tokens": 0,
+  "latency_s": 0.0
+}

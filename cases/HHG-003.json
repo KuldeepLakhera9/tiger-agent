@@ -1,0 +1,157 @@
+{
+  "case_id": "HHG-003",
+  "case": {
+    "status": "closed_fraud",
+    "verdict": "fraud",
+    "fraud_probability": 0.71,
+    "pattern": "out_of_region_use",
+    "pattern_description": "",
+    "affected_txn_ids": [
+      "3530164"
+    ],
+    "first_suspicious_txn_id": "3530164",
+    "connected_card_ids": [],
+    "connected_device_profiles": [],
+    "exposure_usd": 49.0,
+    "evidence": [
+      {
+        "claim": "Flagged transaction 3530164 is $49.00, in_person, risk score 0.40.",
+        "source": "graph",
+        "ref": "query:alert_context",
+        "entity_ids": [
+          "3530164",
+          "C08623-K2",
+          "C08623"
+        ]
+      },
+      {
+        "claim": "Card C08623-K2 has 1134 indexed transactions in the retained history.",
+        "source": "graph",
+        "ref": "query:card_history",
+        "entity_ids": [
+          "C08623-K2"
+        ]
+      },
+      {
+        "claim": "Device evidence unavailable; no usable identity record is attached to the flagged transaction or affected sequence.",
+        "source": "graph",
+        "ref": "query:alert_context",
+        "entity_ids": [
+          "3530164"
+        ]
+      },
+      {
+        "claim": "Flagged billing region 330.0 is not present in the card's preceding retained history.",
+        "source": "graph",
+        "ref": "query:region_connected_cards",
+        "entity_ids": [
+          "3530164",
+          "330.0"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1589 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1589"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2817 with outcome confirmed_fraud and pattern out_of_region_use.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2817"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2935 with outcome confirmed_fraud and pattern out_of_region_use.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2935"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3327 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3327"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3682 with outcome confirmed_fraud and pattern out_of_region_use.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3682"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4957 with outcome confirmed_fraud and pattern out_of_region_use.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4957"
+        ]
+      }
+    ],
+    "similar_prior_cases": [
+      "CC-1589",
+      "CC-2817",
+      "CC-2935",
+      "CC-3327",
+      "CC-3682",
+      "CC-4957"
+    ],
+    "summary": "HHG-003 is assessed as fraud with probability 0.71. Pattern: out_of_region_use. Identified exposure is $49.00; device state is unavailable.",
+    "written_to_graph": false,
+    "graph_case_id": "",
+    "graph_write": {
+      "written": false,
+      "reason": "TigerGraph connection is not configured."
+    }
+  },
+  "evidence_requests": [],
+  "next_best_actions": {
+    "initial": [
+      {
+        "action": "BLOCK_CARD",
+        "route": "L1",
+        "reason": "R2: the benchmark customer report states the transaction was not made; card-level action requires approval."
+      },
+      {
+        "action": "CREATE_CASE",
+        "route": "auto",
+        "reason": "R2: customer dispute requires an internal case."
+      }
+    ],
+    "final": [
+      {
+        "action": "BLOCK_CARD",
+        "route": "L1",
+        "reason": "R2: the benchmark customer report states the transaction was not made; card-level action requires approval."
+      },
+      {
+        "action": "CREATE_CASE",
+        "route": "auto",
+        "reason": "R2: customer dispute requires an internal case."
+      }
+    ],
+    "what_changed": "nothing"
+  },
+  "sar": {
+    "file": false,
+    "reason": "No benchmark SAR trigger is supported by the retained evidence under the policy.",
+    "narrative": "",
+    "subjects": [],
+    "total_amount_usd": 0,
+    "activity_dates": []
+  },
+  "stop_reason": "Further local retrieval is unlikely to change the policy action given the available benchmark evidence.",
+  "tool_calls": 5,
+  "tokens": 0,
+  "latency_s": 0.0
+}

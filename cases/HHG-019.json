@@ -1,0 +1,261 @@
+{
+  "case_id": "HHG-019",
+  "case": {
+    "status": "open",
+    "verdict": "fraud",
+    "fraud_probability": 0.85,
+    "pattern": "card_not_present_new_device",
+    "pattern_description": "",
+    "affected_txn_ids": [
+      "3503878"
+    ],
+    "first_suspicious_txn_id": "3503878",
+    "connected_card_ids": [
+      "C01104-K2",
+      "C01983-K1",
+      "C06224-K2",
+      "C11309-K1"
+    ],
+    "connected_device_profiles": [
+      "Windows | other | chrome 61.0 | 1280x720"
+    ],
+    "exposure_usd": 99.92,
+    "evidence": [
+      {
+        "claim": "Flagged transaction 3503878 is $99.92, online, risk score 0.90.",
+        "source": "graph",
+        "ref": "query:alert_context",
+        "entity_ids": [
+          "3503878",
+          "C07987-K2",
+          "C07987"
+        ]
+      },
+      {
+        "claim": "Card C07987-K2 has 247 indexed transactions in the retained history.",
+        "source": "graph",
+        "ref": "query:card_history",
+        "entity_ids": [
+          "C07987-K2"
+        ]
+      },
+      {
+        "claim": "Device profile Windows | other | chrome 61.0 | 1280x720 is used by the case transaction and other retained cards.",
+        "source": "graph",
+        "ref": "query:device_connected_cards",
+        "entity_ids": [
+          "D-617deda1f7ea4b99306d",
+          "C01104-K2",
+          "C01983-K1",
+          "C06224-K2",
+          "C11309-K1"
+        ]
+      },
+      {
+        "claim": "Flagged billing region 264.0 is not present in the card's preceding retained history.",
+        "source": "graph",
+        "ref": "query:region_connected_cards",
+        "entity_ids": [
+          "3503878",
+          "264.0"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0145 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0145"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1034 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1034"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1263 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1263"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2011 with outcome confirmed_fraud and pattern out_of_region_use.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2011"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2087 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2087"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2406 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2406"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2800 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2800"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2860 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2860"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3319 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3319"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3765 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3765"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3940 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3940"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4284 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4284"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5026 with outcome confirmed_fraud and pattern out_of_region_use.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5026"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5248 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5248"
+        ]
+      }
+    ],
+    "similar_prior_cases": [
+      "CC-0145",
+      "CC-1034",
+      "CC-1263",
+      "CC-2011",
+      "CC-2087",
+      "CC-2406",
+      "CC-2800",
+      "CC-2860",
+      "CC-3319",
+      "CC-3765",
+      "CC-3940",
+      "CC-4284",
+      "CC-5026",
+      "CC-5248"
+    ],
+    "summary": "HHG-019 is assessed as fraud with probability 0.85. Pattern: card_not_present_new_device. Identified exposure is $99.92; device state is connected.",
+    "written_to_graph": false,
+    "graph_case_id": "",
+    "graph_write": {
+      "written": false,
+      "reason": "TigerGraph connection is not configured."
+    }
+  },
+  "evidence_requests": [],
+  "next_best_actions": {
+    "initial": [
+      {
+        "action": "CREATE_CASE",
+        "route": "auto",
+        "reason": "R6: shared origin connects activity across cards."
+      },
+      {
+        "action": "FILE_REPORT",
+        "route": "L2",
+        "reason": "R6: shared origin requires a suspicious activity report."
+      },
+      {
+        "action": "MONITOR_CONNECTED_CARDS",
+        "route": "auto",
+        "reason": "R6: monitor cards sharing the supported origin."
+      }
+    ],
+    "final": [
+      {
+        "action": "CREATE_CASE",
+        "route": "auto",
+        "reason": "R6: shared origin connects activity across cards."
+      },
+      {
+        "action": "FILE_REPORT",
+        "route": "L2",
+        "reason": "R6: shared origin requires a suspicious activity report."
+      },
+      {
+        "action": "MONITOR_CONNECTED_CARDS",
+        "route": "auto",
+        "reason": "R6: monitor cards sharing the supported origin."
+      }
+    ],
+    "what_changed": "nothing"
+  },
+  "sar": {
+    "file": true,
+    "reason": "R6/R9 or the exposure/confirmed-fraud criteria are satisfied by retained evidence.",
+    "narrative": "Customer C07987 and card C07987-K2 show suspicious activity involving transaction(s) 3503878. The activity occurred through the online channel between 2016-12-01 and 2016-12-01. The flagged transaction amount was $99.92, with total identified exposure of $99.92. The investigation identified pattern card_not_present_new_device, based on retained transaction and relationship evidence. Connected cards are C01104-K2, C01983-K1, C06224-K2, C11309-K1, and connected device profiles are Windows | other | chrome 61.0 | 1280x720. The report is based only on supplied benchmark records and does not assert unavailable merchant or customer-response facts.",
+    "subjects": [
+      "C01104-K2",
+      "C01983-K1",
+      "C06224-K2",
+      "C07987",
+      "C07987-K2",
+      "C11309-K1",
+      "Windows | other | chrome 61.0 | 1280x720"
+    ],
+    "total_amount_usd": 99.92,
+    "activity_dates": [
+      "2016-12-01",
+      "2016-12-01"
+    ]
+  },
+  "stop_reason": "Probability reached 0.85 with 4 independent evidence signal(s); remaining actions follow policy.",
+  "tool_calls": 5,
+  "tokens": 0,
+  "latency_s": 0.0
+}

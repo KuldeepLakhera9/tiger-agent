@@ -1,0 +1,274 @@
+{
+  "case_id": "HHG-007",
+  "case": {
+    "status": "open",
+    "verdict": "fraud",
+    "fraud_probability": 0.72,
+    "pattern": "out_of_region_use",
+    "pattern_description": "",
+    "affected_txn_ids": [
+      "3514948"
+    ],
+    "first_suspicious_txn_id": "3514948",
+    "connected_card_ids": [],
+    "connected_device_profiles": [],
+    "exposure_usd": 111.92,
+    "evidence": [
+      {
+        "claim": "Flagged transaction 3514948 is $111.92, in_person, risk score 0.87.",
+        "source": "graph",
+        "ref": "query:alert_context",
+        "entity_ids": [
+          "3514948",
+          "C09933-K2",
+          "C09933"
+        ]
+      },
+      {
+        "claim": "Card C09933-K2 has 2788 indexed transactions in the retained history.",
+        "source": "graph",
+        "ref": "query:card_history",
+        "entity_ids": [
+          "C09933-K2"
+        ]
+      },
+      {
+        "claim": "Device evidence unavailable; no usable identity record is attached to the flagged transaction or affected sequence.",
+        "source": "graph",
+        "ref": "query:alert_context",
+        "entity_ids": [
+          "3514948"
+        ]
+      },
+      {
+        "claim": "Flagged billing region 264.0 is not present in the card's preceding retained history.",
+        "source": "graph",
+        "ref": "query:region_connected_cards",
+        "entity_ids": [
+          "3514948",
+          "264.0"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0104 with outcome confirmed_fraud and pattern out_of_region_use.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0104"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0657 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0657"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0765 with outcome confirmed_fraud and pattern out_of_region_use.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0765"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1228 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1228"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1524 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1524"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1682 with outcome confirmed_fraud and pattern out_of_region_use.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1682"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2565 with outcome confirmed_fraud and pattern out_of_region_use.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2565"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2834 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2834"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2986 with outcome confirmed_fraud and pattern out_of_region_use.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2986"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3136 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3136"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3439 with outcome confirmed_fraud and pattern out_of_region_use.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3439"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3821 with outcome confirmed_fraud and pattern out_of_region_use.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3821"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4196 with outcome confirmed_fraud and pattern out_of_region_use.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4196"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4277 with outcome confirmed_fraud and pattern out_of_region_use.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4277"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4455 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4455"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4597 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4597"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4787 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4787"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5092 with outcome confirmed_fraud and pattern out_of_region_use.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5092"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5521 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5521"
+        ]
+      }
+    ],
+    "similar_prior_cases": [
+      "CC-0104",
+      "CC-0657",
+      "CC-0765",
+      "CC-1228",
+      "CC-1524",
+      "CC-1682",
+      "CC-2565",
+      "CC-2834",
+      "CC-2986",
+      "CC-3136",
+      "CC-3439",
+      "CC-3821",
+      "CC-4196",
+      "CC-4277",
+      "CC-4455",
+      "CC-4597",
+      "CC-4787",
+      "CC-5092",
+      "CC-5521"
+    ],
+    "summary": "HHG-007 is assessed as fraud with probability 0.72. Pattern: out_of_region_use. Identified exposure is $111.92; device state is unavailable.",
+    "written_to_graph": false,
+    "graph_case_id": "",
+    "graph_write": {
+      "written": false,
+      "reason": "TigerGraph connection is not configured."
+    }
+  },
+  "evidence_requests": [],
+  "next_best_actions": {
+    "initial": [
+      {
+        "action": "VERIFY_WITH_CUSTOMER",
+        "route": "auto",
+        "reason": "R1: seek confirmation before any blocking action."
+      },
+      {
+        "action": "CREATE_CASE",
+        "route": "auto",
+        "reason": "Case required because further evidence was requested."
+      }
+    ],
+    "final": [
+      {
+        "action": "VERIFY_WITH_CUSTOMER",
+        "route": "auto",
+        "reason": "R1: seek confirmation before any blocking action."
+      },
+      {
+        "action": "CREATE_CASE",
+        "route": "auto",
+        "reason": "Case required because further evidence was requested."
+      }
+    ],
+    "what_changed": "nothing"
+  },
+  "sar": {
+    "file": false,
+    "reason": "No benchmark SAR trigger is supported by the retained evidence under the policy.",
+    "narrative": "",
+    "subjects": [],
+    "total_amount_usd": 0,
+    "activity_dates": []
+  },
+  "stop_reason": "Further local retrieval is unlikely to change the policy action given the available benchmark evidence.",
+  "tool_calls": 5,
+  "tokens": 0,
+  "latency_s": 0.0
+}

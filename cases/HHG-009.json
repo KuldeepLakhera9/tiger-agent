@@ -1,0 +1,6253 @@
+{
+  "case_id": "HHG-009",
+  "case": {
+    "status": "closed_fraud",
+    "verdict": "fraud",
+    "fraud_probability": 0.8,
+    "pattern": "card_not_present_fraud",
+    "pattern_description": "",
+    "affected_txn_ids": [
+      "3581141"
+    ],
+    "first_suspicious_txn_id": "3581141",
+    "connected_card_ids": [
+      "C00045-K1",
+      "C00073-K2",
+      "C00259-K1",
+      "C00294-K2",
+      "C00329-K2",
+      "C00360-K1",
+      "C00476-K1",
+      "C00483-K1",
+      "C00557-K1",
+      "C00583-K1",
+      "C00730-K1",
+      "C00750-K2",
+      "C00773-K2",
+      "C00854-K2",
+      "C00887-K1",
+      "C00952-K1",
+      "C01033-K1",
+      "C01084-K1",
+      "C01104-K2",
+      "C01109-K2",
+      "C01115-K1",
+      "C01116-K2",
+      "C01155-K2",
+      "C01377-K1",
+      "C01521-K2",
+      "C01656-K1",
+      "C01721-K2",
+      "C01780-K1",
+      "C01812-K1",
+      "C01828-K2",
+      "C01855-K2",
+      "C01909-K2",
+      "C01966-K1",
+      "C01982-K2",
+      "C01983-K1",
+      "C01996-K2",
+      "C02065-K1",
+      "C02079-K1",
+      "C02134-K1",
+      "C02147-K2",
+      "C02180-K1",
+      "C02181-K2",
+      "C02231-K1",
+      "C02354-K2",
+      "C02412-K1",
+      "C02545-K2",
+      "C02639-K1",
+      "C02673-K1",
+      "C02716-K2",
+      "C02780-K2",
+      "C02782-K2",
+      "C02783-K1",
+      "C02809-K2",
+      "C02881-K1",
+      "C02905-K1",
+      "C02910-K1",
+      "C03040-K2",
+      "C03047-K2",
+      "C03066-K1",
+      "C03182-K1",
+      "C03209-K1",
+      "C03218-K2",
+      "C03278-K2",
+      "C03318-K1",
+      "C03389-K1",
+      "C03443-K2",
+      "C03470-K1",
+      "C03474-K1",
+      "C03573-K1",
+      "C03575-K2",
+      "C03592-K1",
+      "C03598-K2",
+      "C03668-K1",
+      "C03738-K2",
+      "C03778-K1",
+      "C03938-K1",
+      "C04021-K1",
+      "C04108-K2",
+      "C04125-K2",
+      "C04177-K1",
+      "C04285-K1",
+      "C04386-K1",
+      "C04597-K2",
+      "C04865-K1",
+      "C04943-K1",
+      "C04965-K2",
+      "C04984-K2",
+      "C04993-K1",
+      "C05031-K2",
+      "C05169-K1",
+      "C05245-K2",
+      "C05289-K2",
+      "C05292-K1",
+      "C05307-K2",
+      "C05367-K1",
+      "C05381-K2",
+      "C05419-K1",
+      "C05595-K1",
+      "C05630-K1",
+      "C05678-K1",
+      "C05704-K2",
+      "C05736-K1",
+      "C05791-K2",
+      "C05999-K1",
+      "C06024-K1",
+      "C06036-K1",
+      "C06198-K1",
+      "C06208-K1",
+      "C06224-K2",
+      "C06437-K1",
+      "C06464-K1",
+      "C06605-K1",
+      "C06630-K2",
+      "C06663-K2",
+      "C06744-K2",
+      "C06759-K1",
+      "C06797-K1",
+      "C06905-K1",
+      "C06947-K2",
+      "C06948-K1",
+      "C06988-K1",
+      "C07105-K1",
+      "C07189-K1",
+      "C07204-K1",
+      "C07212-K2",
+      "C07220-K1",
+      "C07296-K1",
+      "C07360-K1",
+      "C07389-K2",
+      "C07518-K2",
+      "C07562-K2",
+      "C07612-K1",
+      "C07648-K2",
+      "C07685-K1",
+      "C07741-K2",
+      "C07755-K1",
+      "C07779-K1",
+      "C07819-K1",
+      "C07855-K1",
+      "C07858-K2",
+      "C07867-K2",
+      "C07919-K2",
+      "C07925-K1",
+      "C07936-K2",
+      "C07990-K1",
+      "C08013-K1",
+      "C08106-K1",
+      "C08256-K2",
+      "C08260-K1",
+      "C08334-K1",
+      "C08391-K2",
+      "C08637-K2",
+      "C08662-K1",
+      "C08905-K1",
+      "C08918-K2",
+      "C08943-K2",
+      "C08945-K2",
+      "C08962-K2",
+      "C08989-K2",
+      "C09017-K1",
+      "C09132-K1",
+      "C09241-K2",
+      "C09246-K1",
+      "C09249-K1",
+      "C09274-K1",
+      "C09365-K2",
+      "C09430-K1",
+      "C09442-K1",
+      "C09533-K1",
+      "C09657-K2",
+      "C09800-K2",
+      "C09835-K2",
+      "C09885-K1",
+      "C09933-K2",
+      "C10114-K1",
+      "C10127-K2",
+      "C10149-K2",
+      "C10165-K1",
+      "C10245-K1",
+      "C10264-K1",
+      "C10308-K1",
+      "C10602-K1",
+      "C10644-K1",
+      "C10661-K1",
+      "C10760-K2",
+      "C10837-K2",
+      "C10855-K1",
+      "C11000-K2",
+      "C11143-K1",
+      "C11227-K2",
+      "C11273-K2",
+      "C11298-K2",
+      "C11319-K1",
+      "C11444-K1",
+      "C11464-K2",
+      "C11475-K1",
+      "C11496-K2",
+      "C11509-K2",
+      "C11539-K2",
+      "C11597-K2",
+      "C11627-K1",
+      "C11636-K1",
+      "C11704-K1",
+      "C11709-K2",
+      "C11792-K1",
+      "C11844-K2",
+      "C11847-K2",
+      "C11855-K1",
+      "C11881-K1",
+      "C11919-K2",
+      "C11923-K2",
+      "C12028-K2",
+      "C12063-K1",
+      "C12142-K1",
+      "C12166-K2",
+      "C12267-K2",
+      "C12305-K1",
+      "C12373-K1",
+      "C12403-K1",
+      "C12517-K2",
+      "C12585-K1",
+      "C12622-K1",
+      "C12810-K1",
+      "C12897-K1",
+      "C12942-K2",
+      "C12966-K1",
+      "C12983-K1",
+      "C13070-K1",
+      "C13171-K2",
+      "C13302-K1",
+      "C13303-K1",
+      "C13305-K1",
+      "C13403-K2",
+      "C13407-K1",
+      "C13467-K1",
+      "C13538-K1"
+    ],
+    "connected_device_profiles": [],
+    "exposure_usd": 30.02,
+    "evidence": [
+      {
+        "claim": "Flagged transaction 3581141 is $30.02, online, risk score 0.28.",
+        "source": "graph",
+        "ref": "query:alert_context",
+        "entity_ids": [
+          "3581141",
+          "C08299-K1",
+          "C08299"
+        ]
+      },
+      {
+        "claim": "Card C08299-K1 has 56 indexed transactions in the retained history.",
+        "source": "graph",
+        "ref": "query:card_history",
+        "entity_ids": [
+          "C08299-K1"
+        ]
+      },
+      {
+        "claim": "Device evidence unavailable; no usable identity record is attached to the flagged transaction or affected sequence.",
+        "source": "graph",
+        "ref": "query:alert_context",
+        "entity_ids": [
+          "3581141"
+        ]
+      },
+      {
+        "claim": "Flagged billing region 203.0 is not present in the card's preceding retained history.",
+        "source": "graph",
+        "ref": "query:region_connected_cards",
+        "entity_ids": [
+          "3581141",
+          "203.0"
+        ]
+      },
+      {
+        "claim": "The same recipient email gmail.com appears across multiple cards in the 48-hour investigation window.",
+        "source": "graph",
+        "ref": "query:alert_context",
+        "entity_ids": [
+          "C08299-K1",
+          "C11923-K2"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0012 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0012"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0015 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0015"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0031 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0031"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0056 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0056"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0086 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0086"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0104 with outcome confirmed_fraud and pattern out_of_region_use.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0104"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0110 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0110"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0122 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0122"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0135 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0135"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0145 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0145"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0177 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0177"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0199 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0199"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0204 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0204"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0206 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0206"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0211 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0211"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0223 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0223"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0228 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0228"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0255 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0255"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0260 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0260"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0286 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0286"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0290 with outcome confirmed_fraud and pattern card_testing.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0290"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0328 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0328"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0331 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0331"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0334 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0334"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0337 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0337"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0357 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0357"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0365 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0365"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0368 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0368"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0375 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0375"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0379 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0379"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0380 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0380"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0399 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0399"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0404 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0404"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0405 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0405"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0429 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0429"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0437 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0437"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0438 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0438"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0453 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0453"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0454 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0454"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0455 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0455"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0467 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0467"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0482 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0482"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0496 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0496"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0506 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0506"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0512 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0512"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0519 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0519"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0520 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0520"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0531 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0531"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0535 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0535"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0541 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0541"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0542 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0542"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0547 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0547"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0548 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0548"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0560 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0560"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0578 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0578"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0581 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0581"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0592 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0592"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0621 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0621"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0631 with outcome confirmed_fraud and pattern out_of_region_use.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0631"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0636 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0636"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0653 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0653"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0657 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0657"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0668 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0668"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0691 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0691"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0696 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0696"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0697 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0697"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0700 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0700"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0724 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0724"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0740 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0740"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0749 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0749"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0750 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0750"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0765 with outcome confirmed_fraud and pattern out_of_region_use.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0765"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0772 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0772"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0784 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0784"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0800 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0800"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0801 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0801"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0829 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0829"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0883 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0883"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0928 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0928"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0932 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0932"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0943 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0943"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0960 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0960"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0975 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0975"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0981 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0981"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0982 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0982"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0989 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0989"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1003 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1003"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1011 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1011"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1015 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1015"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1021 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1021"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1034 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1034"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1056 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1056"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1060 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1060"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1064 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1064"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1069 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1069"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1071 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1071"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1088 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1088"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1099 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1099"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1102 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1102"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1104 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1104"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1116 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1116"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1125 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1125"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1141 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1141"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1142 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1142"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1148 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1148"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1155 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1155"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1156 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1156"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1169 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1169"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1178 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1178"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1195 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1195"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1200 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1200"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1215 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1215"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1218 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1218"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1228 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1228"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1231 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1231"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1235 with outcome confirmed_fraud and pattern card_testing.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1235"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1241 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1241"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1242 with outcome confirmed_fraud and pattern card_testing.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1242"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1243 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1243"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1257 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1257"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1273 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1273"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1275 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1275"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1288 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1288"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1293 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1293"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1296 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1296"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1300 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1300"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1341 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1341"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1345 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1345"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1358 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1358"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1367 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1367"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1373 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1373"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1374 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1374"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1376 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1376"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1385 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1385"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1390 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1390"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1401 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1401"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1405 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1405"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1439 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1439"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1450 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1450"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1451 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1451"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1454 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1454"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1458 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1458"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1461 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1461"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1477 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1477"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1492 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1492"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1495 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1495"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1497 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1497"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1498 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1498"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1500 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1500"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1503 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1503"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1504 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1504"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1513 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1513"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1524 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1524"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1531 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1531"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1535 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1535"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1538 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1538"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1540 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1540"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1549 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1549"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1569 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1569"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1571 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1571"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1581 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1581"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1590 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1590"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1593 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1593"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1594 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1594"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1600 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1600"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1611 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1611"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1619 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1619"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1622 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1622"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1631 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1631"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1640 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1640"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1641 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1641"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1643 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1643"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1656 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1656"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1663 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1663"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1667 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1667"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1682 with outcome confirmed_fraud and pattern out_of_region_use.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1682"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1683 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1683"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1690 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1690"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1691 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1691"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1697 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1697"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1699 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1699"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1703 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1703"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1715 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1715"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1730 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1730"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1736 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1736"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1747 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1747"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1756 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1756"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1759 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1759"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1766 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1766"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1768 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1768"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1770 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1770"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1771 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1771"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1779 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1779"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1782 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1782"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1784 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1784"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1794 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1794"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1815 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1815"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1832 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1832"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1856 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1856"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1863 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1863"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1873 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1873"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1913 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1913"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1915 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1915"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1925 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1925"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1926 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1926"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1929 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1929"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1930 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1930"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1948 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1948"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1951 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1951"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1962 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1962"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1969 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1969"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1974 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1974"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1990 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1990"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1997 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1997"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1998 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1998"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2024 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2024"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2027 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2027"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2039 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2039"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2050 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2050"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2051 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2051"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2053 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2053"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2057 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2057"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2059 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2059"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2085 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2085"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2105 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2105"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2117 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2117"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2121 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2121"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2125 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2125"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2150 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2150"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2154 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2154"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2166 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2166"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2167 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2167"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2176 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2176"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2187 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2187"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2191 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2191"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2198 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2198"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2227 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2227"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2229 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2229"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2244 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2244"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2247 with outcome confirmed_fraud and pattern card_testing.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2247"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2248 with outcome confirmed_fraud and pattern card_testing.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2248"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2258 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2258"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2271 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2271"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2273 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2273"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2285 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2285"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2300 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2300"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2307 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2307"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2310 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2310"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2320 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2320"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2323 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2323"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2336 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2336"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2345 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2345"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2363 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2363"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2393 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2393"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2394 with outcome confirmed_fraud and pattern card_testing.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2394"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2395 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2395"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2409 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2409"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2415 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2415"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2428 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2428"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2432 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2432"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2437 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2437"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2439 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2439"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2445 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2445"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2451 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2451"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2454 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2454"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2464 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2464"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2480 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2480"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2481 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2481"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2489 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2489"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2493 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2493"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2499 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2499"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2502 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2502"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2505 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2505"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2506 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2506"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2513 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2513"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2525 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2525"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2542 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2542"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2547 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2547"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2550 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2550"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2560 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2560"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2561 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2561"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2565 with outcome confirmed_fraud and pattern out_of_region_use.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2565"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2575 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2575"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2578 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2578"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2589 with outcome confirmed_fraud and pattern out_of_region_use.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2589"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2590 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2590"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2598 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2598"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2603 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2603"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2605 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2605"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2607 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2607"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2611 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2611"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2633 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2633"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2634 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2634"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2643 with outcome confirmed_fraud and pattern card_testing.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2643"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2661 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2661"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2673 with outcome confirmed_fraud and pattern card_testing.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2673"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2694 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2694"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2699 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2699"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2705 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2705"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2713 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2713"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2716 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2716"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2726 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2726"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2746 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2746"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2750 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2750"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2771 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2771"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2775 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2775"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2784 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2784"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2795 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2795"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2797 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2797"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2799 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2799"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2800 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2800"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2815 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2815"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2821 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2821"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2826 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2826"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2831 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2831"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2834 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2834"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2838 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2838"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2844 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2844"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2849 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2849"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2852 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2852"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2862 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2862"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2890 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2890"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2891 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2891"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2898 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2898"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2918 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2918"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2931 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2931"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2940 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2940"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2945 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2945"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2955 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2955"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2957 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2957"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2961 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2961"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2965 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2965"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2979 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2979"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2981 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2981"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2983 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2983"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2986 with outcome confirmed_fraud and pattern out_of_region_use.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2986"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2997 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2997"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3006 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3006"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3029 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3029"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3031 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3031"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3039 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3039"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3040 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3040"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3047 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3047"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3054 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3054"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3057 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3057"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3063 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3063"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3073 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3073"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3079 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3079"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3085 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3085"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3088 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3088"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3091 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3091"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3093 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3093"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3107 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3107"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3111 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3111"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3115 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3115"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3119 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3119"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3120 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3120"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3123 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3123"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3127 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3127"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3133 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3133"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3134 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3134"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3136 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3136"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3150 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3150"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3155 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3155"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3157 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3157"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3159 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3159"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3162 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3162"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3172 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3172"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3173 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3173"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3174 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3174"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3175 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3175"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3201 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3201"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3206 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3206"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3219 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3219"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3221 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3221"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3223 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3223"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3237 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3237"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3243 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3243"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3250 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3250"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3262 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3262"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3271 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3271"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3274 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3274"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3285 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3285"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3288 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3288"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3310 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3310"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3317 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3317"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3319 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3319"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3337 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3337"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3339 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3339"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3343 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3343"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3347 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3347"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3351 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3351"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3353 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3353"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3358 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3358"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3383 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3383"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3415 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3415"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3416 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3416"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3422 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3422"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3426 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3426"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3432 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3432"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3439 with outcome confirmed_fraud and pattern out_of_region_use.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3439"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3450 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3450"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3471 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3471"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3489 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3489"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3491 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3491"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3524 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3524"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3528 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3528"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3537 with outcome confirmed_fraud and pattern out_of_region_use.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3537"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3549 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3549"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3551 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3551"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3553 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3553"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3556 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3556"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3562 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3562"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3564 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3564"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3566 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3566"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3571 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3571"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3576 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3576"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3583 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3583"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3594 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3594"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3597 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3597"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3607 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3607"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3626 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3626"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3632 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3632"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3633 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3633"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3634 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3634"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3638 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3638"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3643 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3643"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3653 with outcome confirmed_fraud and pattern card_testing.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3653"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3657 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3657"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3673 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3673"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3685 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3685"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3706 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3706"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3707 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3707"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3713 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3713"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3728 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3728"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3739 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3739"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3740 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3740"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3749 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3749"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3760 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3760"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3764 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3764"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3765 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3765"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3766 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3766"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3778 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3778"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3779 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3779"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3783 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3783"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3785 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3785"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3788 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3788"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3791 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3791"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3792 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3792"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3796 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3796"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3797 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3797"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3810 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3810"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3821 with outcome confirmed_fraud and pattern out_of_region_use.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3821"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3827 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3827"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3836 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3836"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3844 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3844"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3847 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3847"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3855 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3855"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3859 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3859"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3860 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3860"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3871 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3871"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3873 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3873"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3895 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3895"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3899 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3899"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3904 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3904"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3905 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3905"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3919 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3919"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3920 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3920"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3921 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3921"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3928 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3928"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3933 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3933"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3940 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3940"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3953 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3953"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3958 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3958"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3960 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3960"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3968 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3968"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3977 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3977"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3979 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3979"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4033 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4033"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4045 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4045"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4058 with outcome confirmed_fraud and pattern card_testing.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4058"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4062 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4062"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4065 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4065"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4066 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4066"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4070 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4070"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4072 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4072"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4075 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4075"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4083 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4083"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4089 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4089"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4099 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4099"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4100 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4100"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4119 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4119"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4147 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4147"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4149 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4149"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4155 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4155"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4156 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4156"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4163 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4163"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4167 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4167"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4169 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4169"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4177 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4177"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4192 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4192"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4195 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4195"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4196 with outcome confirmed_fraud and pattern out_of_region_use.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4196"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4223 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4223"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4225 with outcome confirmed_fraud and pattern card_testing.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4225"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4229 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4229"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4234 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4234"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4247 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4247"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4253 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4253"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4255 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4255"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4276 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4276"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4277 with outcome confirmed_fraud and pattern out_of_region_use.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4277"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4293 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4293"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4314 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4314"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4332 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4332"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4340 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4340"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4348 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4348"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4351 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4351"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4362 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4362"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4371 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4371"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4376 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4376"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4394 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4394"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4396 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4396"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4402 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4402"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4403 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4403"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4434 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4434"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4435 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4435"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4436 with outcome confirmed_fraud and pattern out_of_region_use.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4436"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4438 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4438"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4455 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4455"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4472 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4472"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4479 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4479"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4485 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4485"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4486 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4486"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4496 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4496"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4497 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4497"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4500 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4500"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4501 with outcome confirmed_fraud and pattern card_testing.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4501"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4503 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4503"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4506 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4506"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4519 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4519"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4524 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4524"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4533 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4533"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4536 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4536"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4541 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4541"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4547 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4547"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4548 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4548"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4555 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4555"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4567 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4567"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4573 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4573"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4589 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4589"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4594 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4594"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4597 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4597"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4603 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4603"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4608 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4608"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4620 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4620"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4627 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4627"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4632 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4632"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4669 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4669"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4691 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4691"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4693 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4693"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4707 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4707"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4710 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4710"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4717 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4717"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4718 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4718"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4721 with outcome confirmed_fraud and pattern out_of_region_use.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4721"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4725 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4725"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4733 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4733"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4743 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4743"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4765 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4765"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4766 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4766"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4768 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4768"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4772 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4772"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4777 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4777"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4787 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4787"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4800 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4800"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4804 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4804"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4819 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4819"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4822 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4822"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4831 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4831"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4832 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4832"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4840 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4840"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4846 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4846"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4849 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4849"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4855 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4855"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4856 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4856"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4877 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4877"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4879 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4879"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4880 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4880"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4886 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4886"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4917 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4917"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4937 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4937"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4942 with outcome confirmed_fraud and pattern out_of_region_use.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4942"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4943 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4943"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4953 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4953"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4956 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4956"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4958 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4958"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4972 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4972"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4977 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4977"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4982 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4982"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4987 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4987"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-4991 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-4991"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5010 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5010"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5012 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5012"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5015 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5015"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5021 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5021"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5027 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5027"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5029 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5029"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5057 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5057"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5064 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5064"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5075 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5075"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5085 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5085"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5088 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5088"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5092 with outcome confirmed_fraud and pattern out_of_region_use.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5092"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5094 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5094"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5099 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5099"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5104 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5104"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5109 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5109"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5111 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5111"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5118 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5118"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5130 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5130"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5140 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5140"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5142 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5142"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5157 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5157"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5171 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5171"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5187 with outcome confirmed_fraud and pattern card_testing.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5187"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5198 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5198"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5202 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5202"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5217 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5217"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5218 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5218"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5219 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5219"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5248 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5248"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5266 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5266"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5267 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5267"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5276 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5276"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5285 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5285"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5311 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5311"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5321 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5321"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5331 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5331"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5332 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5332"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5339 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5339"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5369 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5369"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5370 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5370"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5388 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5388"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5410 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5410"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5415 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5415"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5421 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5421"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5441 with outcome confirmed_fraud and pattern out_of_region_use.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5441"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5447 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5447"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5499 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5499"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5519 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5519"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5521 with outcome confirmed_fraud and pattern account_takeover.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5521"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5535 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5535"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5541 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5541"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5542 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5542"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-5558 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-5558"
+        ]
+      }
+    ],
+    "similar_prior_cases": [
+      "CC-0012",
+      "CC-0015",
+      "CC-0031",
+      "CC-0056",
+      "CC-0086",
+      "CC-0104",
+      "CC-0110",
+      "CC-0122",
+      "CC-0135",
+      "CC-0145",
+      "CC-0177",
+      "CC-0199",
+      "CC-0204",
+      "CC-0206",
+      "CC-0211",
+      "CC-0223",
+      "CC-0228",
+      "CC-0255",
+      "CC-0260",
+      "CC-0286",
+      "CC-0290",
+      "CC-0328",
+      "CC-0331",
+      "CC-0334",
+      "CC-0337",
+      "CC-0357",
+      "CC-0365",
+      "CC-0368",
+      "CC-0375",
+      "CC-0379",
+      "CC-0380",
+      "CC-0399",
+      "CC-0404",
+      "CC-0405",
+      "CC-0429",
+      "CC-0437",
+      "CC-0438",
+      "CC-0453",
+      "CC-0454",
+      "CC-0455",
+      "CC-0467",
+      "CC-0482",
+      "CC-0496",
+      "CC-0506",
+      "CC-0512",
+      "CC-0519",
+      "CC-0520",
+      "CC-0531",
+      "CC-0535",
+      "CC-0541",
+      "CC-0542",
+      "CC-0547",
+      "CC-0548",
+      "CC-0560",
+      "CC-0578",
+      "CC-0581",
+      "CC-0592",
+      "CC-0621",
+      "CC-0631",
+      "CC-0636",
+      "CC-0653",
+      "CC-0657",
+      "CC-0668",
+      "CC-0691",
+      "CC-0696",
+      "CC-0697",
+      "CC-0700",
+      "CC-0724",
+      "CC-0740",
+      "CC-0749",
+      "CC-0750",
+      "CC-0765",
+      "CC-0772",
+      "CC-0784",
+      "CC-0800",
+      "CC-0801",
+      "CC-0829",
+      "CC-0883",
+      "CC-0928",
+      "CC-0932",
+      "CC-0943",
+      "CC-0960",
+      "CC-0975",
+      "CC-0981",
+      "CC-0982",
+      "CC-0989",
+      "CC-1003",
+      "CC-1011",
+      "CC-1015",
+      "CC-1021",
+      "CC-1034",
+      "CC-1056",
+      "CC-1060",
+      "CC-1064",
+      "CC-1069",
+      "CC-1071",
+      "CC-1088",
+      "CC-1099",
+      "CC-1102",
+      "CC-1104",
+      "CC-1116",
+      "CC-1125",
+      "CC-1141",
+      "CC-1142",
+      "CC-1148",
+      "CC-1155",
+      "CC-1156",
+      "CC-1169",
+      "CC-1178",
+      "CC-1195",
+      "CC-1200",
+      "CC-1215",
+      "CC-1218",
+      "CC-1228",
+      "CC-1231",
+      "CC-1235",
+      "CC-1241",
+      "CC-1242",
+      "CC-1243",
+      "CC-1257",
+      "CC-1273",
+      "CC-1275",
+      "CC-1288",
+      "CC-1293",
+      "CC-1296",
+      "CC-1300",
+      "CC-1341",
+      "CC-1345",
+      "CC-1358",
+      "CC-1367",
+      "CC-1373",
+      "CC-1374",
+      "CC-1376",
+      "CC-1385",
+      "CC-1390",
+      "CC-1401",
+      "CC-1405",
+      "CC-1439",
+      "CC-1450",
+      "CC-1451",
+      "CC-1454",
+      "CC-1458",
+      "CC-1461",
+      "CC-1477",
+      "CC-1492",
+      "CC-1495",
+      "CC-1497",
+      "CC-1498",
+      "CC-1500",
+      "CC-1503",
+      "CC-1504",
+      "CC-1513",
+      "CC-1524",
+      "CC-1531",
+      "CC-1535",
+      "CC-1538",
+      "CC-1540",
+      "CC-1549",
+      "CC-1569",
+      "CC-1571",
+      "CC-1581",
+      "CC-1590",
+      "CC-1593",
+      "CC-1594",
+      "CC-1600",
+      "CC-1611",
+      "CC-1619",
+      "CC-1622",
+      "CC-1631",
+      "CC-1640",
+      "CC-1641",
+      "CC-1643",
+      "CC-1656",
+      "CC-1663",
+      "CC-1667",
+      "CC-1682",
+      "CC-1683",
+      "CC-1690",
+      "CC-1691",
+      "CC-1697",
+      "CC-1699",
+      "CC-1703",
+      "CC-1715",
+      "CC-1730",
+      "CC-1736",
+      "CC-1747",
+      "CC-1756",
+      "CC-1759",
+      "CC-1766",
+      "CC-1768",
+      "CC-1770",
+      "CC-1771",
+      "CC-1779",
+      "CC-1782",
+      "CC-1784",
+      "CC-1794",
+      "CC-1815",
+      "CC-1832",
+      "CC-1856",
+      "CC-1863",
+      "CC-1873",
+      "CC-1913",
+      "CC-1915",
+      "CC-1925",
+      "CC-1926",
+      "CC-1929",
+      "CC-1930",
+      "CC-1948",
+      "CC-1951",
+      "CC-1962",
+      "CC-1969",
+      "CC-1974",
+      "CC-1990",
+      "CC-1997",
+      "CC-1998",
+      "CC-2024",
+      "CC-2027",
+      "CC-2039",
+      "CC-2050",
+      "CC-2051",
+      "CC-2053",
+      "CC-2057",
+      "CC-2059",
+      "CC-2085",
+      "CC-2105",
+      "CC-2117",
+      "CC-2121",
+      "CC-2125",
+      "CC-2150",
+      "CC-2154",
+      "CC-2166",
+      "CC-2167",
+      "CC-2176",
+      "CC-2187",
+      "CC-2191",
+      "CC-2198",
+      "CC-2227",
+      "CC-2229",
+      "CC-2244",
+      "CC-2247",
+      "CC-2248",
+      "CC-2258",
+      "CC-2271",
+      "CC-2273",
+      "CC-2285",
+      "CC-2300",
+      "CC-2307",
+      "CC-2310",
+      "CC-2320",
+      "CC-2323",
+      "CC-2336",
+      "CC-2345",
+      "CC-2363",
+      "CC-2393",
+      "CC-2394",
+      "CC-2395",
+      "CC-2409",
+      "CC-2415",
+      "CC-2428",
+      "CC-2432",
+      "CC-2437",
+      "CC-2439",
+      "CC-2445",
+      "CC-2451",
+      "CC-2454",
+      "CC-2464",
+      "CC-2480",
+      "CC-2481",
+      "CC-2489",
+      "CC-2493",
+      "CC-2499",
+      "CC-2502",
+      "CC-2505",
+      "CC-2506",
+      "CC-2513",
+      "CC-2525",
+      "CC-2542",
+      "CC-2547",
+      "CC-2550",
+      "CC-2560",
+      "CC-2561",
+      "CC-2565",
+      "CC-2575",
+      "CC-2578",
+      "CC-2589",
+      "CC-2590",
+      "CC-2598",
+      "CC-2603",
+      "CC-2605",
+      "CC-2607",
+      "CC-2611",
+      "CC-2633",
+      "CC-2634",
+      "CC-2643",
+      "CC-2661",
+      "CC-2673",
+      "CC-2694",
+      "CC-2699",
+      "CC-2705",
+      "CC-2713",
+      "CC-2716",
+      "CC-2726",
+      "CC-2746",
+      "CC-2750",
+      "CC-2771",
+      "CC-2775",
+      "CC-2784",
+      "CC-2795",
+      "CC-2797",
+      "CC-2799",
+      "CC-2800",
+      "CC-2815",
+      "CC-2821",
+      "CC-2826",
+      "CC-2831",
+      "CC-2834",
+      "CC-2838",
+      "CC-2844",
+      "CC-2849",
+      "CC-2852",
+      "CC-2862",
+      "CC-2890",
+      "CC-2891",
+      "CC-2898",
+      "CC-2918",
+      "CC-2931",
+      "CC-2940",
+      "CC-2945",
+      "CC-2955",
+      "CC-2957",
+      "CC-2961",
+      "CC-2965",
+      "CC-2979",
+      "CC-2981",
+      "CC-2983",
+      "CC-2986",
+      "CC-2997",
+      "CC-3006",
+      "CC-3029",
+      "CC-3031",
+      "CC-3039",
+      "CC-3040",
+      "CC-3047",
+      "CC-3054",
+      "CC-3057",
+      "CC-3063",
+      "CC-3073",
+      "CC-3079",
+      "CC-3085",
+      "CC-3088",
+      "CC-3091",
+      "CC-3093",
+      "CC-3107",
+      "CC-3111",
+      "CC-3115",
+      "CC-3119",
+      "CC-3120",
+      "CC-3123",
+      "CC-3127",
+      "CC-3133",
+      "CC-3134",
+      "CC-3136",
+      "CC-3150",
+      "CC-3155",
+      "CC-3157",
+      "CC-3159",
+      "CC-3162",
+      "CC-3172",
+      "CC-3173",
+      "CC-3174",
+      "CC-3175",
+      "CC-3201",
+      "CC-3206",
+      "CC-3219",
+      "CC-3221",
+      "CC-3223",
+      "CC-3237",
+      "CC-3243",
+      "CC-3250",
+      "CC-3262",
+      "CC-3271",
+      "CC-3274",
+      "CC-3285",
+      "CC-3288",
+      "CC-3310",
+      "CC-3317",
+      "CC-3319",
+      "CC-3337",
+      "CC-3339",
+      "CC-3343",
+      "CC-3347",
+      "CC-3351",
+      "CC-3353",
+      "CC-3358",
+      "CC-3383",
+      "CC-3415",
+      "CC-3416",
+      "CC-3422",
+      "CC-3426",
+      "CC-3432",
+      "CC-3439",
+      "CC-3450",
+      "CC-3471",
+      "CC-3489",
+      "CC-3491",
+      "CC-3524",
+      "CC-3528",
+      "CC-3537",
+      "CC-3549",
+      "CC-3551",
+      "CC-3553",
+      "CC-3556",
+      "CC-3562",
+      "CC-3564",
+      "CC-3566",
+      "CC-3571",
+      "CC-3576",
+      "CC-3583",
+      "CC-3594",
+      "CC-3597",
+      "CC-3607",
+      "CC-3626",
+      "CC-3632",
+      "CC-3633",
+      "CC-3634",
+      "CC-3638",
+      "CC-3643",
+      "CC-3653",
+      "CC-3657",
+      "CC-3673",
+      "CC-3685",
+      "CC-3706",
+      "CC-3707",
+      "CC-3713",
+      "CC-3728",
+      "CC-3739",
+      "CC-3740",
+      "CC-3749",
+      "CC-3760",
+      "CC-3764",
+      "CC-3765",
+      "CC-3766",
+      "CC-3778",
+      "CC-3779",
+      "CC-3783",
+      "CC-3785",
+      "CC-3788",
+      "CC-3791",
+      "CC-3792",
+      "CC-3796",
+      "CC-3797",
+      "CC-3810",
+      "CC-3821",
+      "CC-3827",
+      "CC-3836",
+      "CC-3844",
+      "CC-3847",
+      "CC-3855",
+      "CC-3859",
+      "CC-3860",
+      "CC-3871",
+      "CC-3873",
+      "CC-3895",
+      "CC-3899",
+      "CC-3904",
+      "CC-3905",
+      "CC-3919",
+      "CC-3920",
+      "CC-3921",
+      "CC-3928",
+      "CC-3933",
+      "CC-3940",
+      "CC-3953",
+      "CC-3958",
+      "CC-3960",
+      "CC-3968",
+      "CC-3977",
+      "CC-3979",
+      "CC-4033",
+      "CC-4045",
+      "CC-4058",
+      "CC-4062",
+      "CC-4065",
+      "CC-4066",
+      "CC-4070",
+      "CC-4072",
+      "CC-4075",
+      "CC-4083",
+      "CC-4089",
+      "CC-4099",
+      "CC-4100",
+      "CC-4119",
+      "CC-4147",
+      "CC-4149",
+      "CC-4155",
+      "CC-4156",
+      "CC-4163",
+      "CC-4167",
+      "CC-4169",
+      "CC-4177",
+      "CC-4192",
+      "CC-4195",
+      "CC-4196",
+      "CC-4223",
+      "CC-4225",
+      "CC-4229",
+      "CC-4234",
+      "CC-4247",
+      "CC-4253",
+      "CC-4255",
+      "CC-4276",
+      "CC-4277",
+      "CC-4293",
+      "CC-4314",
+      "CC-4332",
+      "CC-4340",
+      "CC-4348",
+      "CC-4351",
+      "CC-4362",
+      "CC-4371",
+      "CC-4376",
+      "CC-4394",
+      "CC-4396",
+      "CC-4402",
+      "CC-4403",
+      "CC-4434",
+      "CC-4435",
+      "CC-4436",
+      "CC-4438",
+      "CC-4455",
+      "CC-4472",
+      "CC-4479",
+      "CC-4485",
+      "CC-4486",
+      "CC-4496",
+      "CC-4497",
+      "CC-4500",
+      "CC-4501",
+      "CC-4503",
+      "CC-4506",
+      "CC-4519",
+      "CC-4524",
+      "CC-4533",
+      "CC-4536",
+      "CC-4541",
+      "CC-4547",
+      "CC-4548",
+      "CC-4555",
+      "CC-4567",
+      "CC-4573",
+      "CC-4589",
+      "CC-4594",
+      "CC-4597",
+      "CC-4603",
+      "CC-4608",
+      "CC-4620",
+      "CC-4627",
+      "CC-4632",
+      "CC-4669",
+      "CC-4691",
+      "CC-4693",
+      "CC-4707",
+      "CC-4710",
+      "CC-4717",
+      "CC-4718",
+      "CC-4721",
+      "CC-4725",
+      "CC-4733",
+      "CC-4743",
+      "CC-4765",
+      "CC-4766",
+      "CC-4768",
+      "CC-4772",
+      "CC-4777",
+      "CC-4787",
+      "CC-4800",
+      "CC-4804",
+      "CC-4819",
+      "CC-4822",
+      "CC-4831",
+      "CC-4832",
+      "CC-4840",
+      "CC-4846",
+      "CC-4849",
+      "CC-4855",
+      "CC-4856",
+      "CC-4877",
+      "CC-4879",
+      "CC-4880",
+      "CC-4886",
+      "CC-4917",
+      "CC-4937",
+      "CC-4942",
+      "CC-4943",
+      "CC-4953",
+      "CC-4956",
+      "CC-4958",
+      "CC-4972",
+      "CC-4977",
+      "CC-4982",
+      "CC-4987",
+      "CC-4991",
+      "CC-5010",
+      "CC-5012",
+      "CC-5015",
+      "CC-5021",
+      "CC-5027",
+      "CC-5029",
+      "CC-5057",
+      "CC-5064",
+      "CC-5075",
+      "CC-5085",
+      "CC-5088",
+      "CC-5092",
+      "CC-5094",
+      "CC-5099",
+      "CC-5104",
+      "CC-5109",
+      "CC-5111",
+      "CC-5118",
+      "CC-5130",
+      "CC-5140",
+      "CC-5142",
+      "CC-5157",
+      "CC-5171",
+      "CC-5187",
+      "CC-5198",
+      "CC-5202",
+      "CC-5217",
+      "CC-5218",
+      "CC-5219",
+      "CC-5248",
+      "CC-5266",
+      "CC-5267",
+      "CC-5276",
+      "CC-5285",
+      "CC-5311",
+      "CC-5321",
+      "CC-5331",
+      "CC-5332",
+      "CC-5339",
+      "CC-5369",
+      "CC-5370",
+      "CC-5388",
+      "CC-5410",
+      "CC-5415",
+      "CC-5421",
+      "CC-5441",
+      "CC-5447",
+      "CC-5499",
+      "CC-5519",
+      "CC-5521",
+      "CC-5535",
+      "CC-5541",
+      "CC-5542",
+      "CC-5558"
+    ],
+    "summary": "HHG-009 is assessed as fraud with probability 0.80. Pattern: card_not_present_fraud. Identified exposure is $30.02; device state is unavailable.",
+    "written_to_graph": false,
+    "graph_case_id": "",
+    "graph_write": {
+      "written": false,
+      "reason": "TigerGraph connection is not configured."
+    }
+  },
+  "evidence_requests": [],
+  "next_best_actions": {
+    "initial": [
+      {
+        "action": "BLOCK_CARD",
+        "route": "L1",
+        "reason": "R2: the benchmark customer report states the transaction was not made; card-level action requires approval."
+      },
+      {
+        "action": "CREATE_CASE",
+        "route": "auto",
+        "reason": "R2: customer dispute requires an internal case."
+      }
+    ],
+    "final": [
+      {
+        "action": "BLOCK_CARD",
+        "route": "L1",
+        "reason": "R2: the benchmark customer report states the transaction was not made; card-level action requires approval."
+      },
+      {
+        "action": "CREATE_CASE",
+        "route": "auto",
+        "reason": "R2: customer dispute requires an internal case."
+      }
+    ],
+    "what_changed": "nothing"
+  },
+  "sar": {
+    "file": false,
+    "reason": "No benchmark SAR trigger is supported by the retained evidence under the policy.",
+    "narrative": "",
+    "subjects": [],
+    "total_amount_usd": 0,
+    "activity_dates": []
+  },
+  "stop_reason": "Further local retrieval is unlikely to change the policy action given the available benchmark evidence.",
+  "tool_calls": 5,
+  "tokens": 0,
+  "latency_s": 0.0
+}

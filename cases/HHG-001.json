@@ -1,0 +1,140 @@
+{
+  "case_id": "HHG-001",
+  "case": {
+    "status": "open",
+    "verdict": "uncertain",
+    "fraud_probability": 0.55,
+    "pattern": "out_of_region_use",
+    "pattern_description": "",
+    "affected_txn_ids": [
+      "3514030"
+    ],
+    "first_suspicious_txn_id": "3514030",
+    "connected_card_ids": [],
+    "connected_device_profiles": [],
+    "exposure_usd": 77.07,
+    "evidence": [
+      {
+        "claim": "Flagged transaction 3514030 is $77.07, in_person, risk score 0.61.",
+        "source": "graph",
+        "ref": "query:alert_context",
+        "entity_ids": [
+          "3514030",
+          "C12382-K1",
+          "C12382"
+        ]
+      },
+      {
+        "claim": "Card C12382-K1 has 422 indexed transactions in the retained history.",
+        "source": "graph",
+        "ref": "query:card_history",
+        "entity_ids": [
+          "C12382-K1"
+        ]
+      },
+      {
+        "claim": "Device evidence unavailable; no usable identity record is attached to the flagged transaction or affected sequence.",
+        "source": "graph",
+        "ref": "query:alert_context",
+        "entity_ids": [
+          "3514030"
+        ]
+      },
+      {
+        "claim": "Flagged billing region 444.0 is not present in the card's preceding retained history.",
+        "source": "graph",
+        "ref": "query:region_connected_cards",
+        "entity_ids": [
+          "3514030",
+          "444.0"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1066 with outcome confirmed_fraud and pattern out_of_region_use.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1066"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-1673 with outcome confirmed_fraud and pattern card_not_present_new_device.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-1673"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2964 with outcome confirmed_fraud and pattern out_of_region_use.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2964"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-3587 with outcome confirmed_fraud and pattern out_of_region_use.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-3587"
+        ]
+      }
+    ],
+    "similar_prior_cases": [
+      "CC-1066",
+      "CC-1673",
+      "CC-2964",
+      "CC-3587"
+    ],
+    "summary": "HHG-001 is assessed as uncertain with probability 0.55. Pattern: out_of_region_use. Identified exposure is $77.07; device state is unavailable.",
+    "written_to_graph": false,
+    "graph_case_id": "",
+    "graph_write": {
+      "written": false,
+      "reason": "TigerGraph connection is not configured."
+    }
+  },
+  "evidence_requests": [
+    {
+      "type": "customer_validation",
+      "asked_after_step": 1,
+      "assumed_response": "No customer response is available in the benchmark; retain the uncertain decision."
+    }
+  ],
+  "next_best_actions": {
+    "initial": [
+      {
+        "action": "VERIFY_WITH_CUSTOMER",
+        "route": "auto",
+        "reason": "R1: evidence is not decisive and probability is below the blocking threshold."
+      }
+    ],
+    "final": [
+      {
+        "action": "VERIFY_WITH_CUSTOMER",
+        "route": "auto",
+        "reason": "R1: evidence is not decisive and probability is below the blocking threshold."
+      },
+      {
+        "action": "CREATE_CASE",
+        "route": "auto",
+        "reason": "A requested evidence step requires an internal case under policy 3a."
+      }
+    ],
+    "what_changed": "Final actions reflect the evidence request and policy case requirement; no response was assumed."
+  },
+  "sar": {
+    "file": false,
+    "reason": "No benchmark SAR trigger is supported by the retained evidence under the policy.",
+    "narrative": "",
+    "subjects": [],
+    "total_amount_usd": 0,
+    "activity_dates": []
+  },
+  "stop_reason": "Investigation reached an evidence dead end; no customer response or usable device evidence is available.",
+  "tool_calls": 5,
+  "tokens": 0,
+  "latency_s": 0.0
+}

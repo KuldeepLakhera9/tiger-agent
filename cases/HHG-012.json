@@ -1,0 +1,122 @@
+{
+  "case_id": "HHG-012",
+  "case": {
+    "status": "open",
+    "verdict": "uncertain",
+    "fraud_probability": 0.53,
+    "pattern": "out_of_region_use",
+    "pattern_description": "",
+    "affected_txn_ids": [
+      "3553342"
+    ],
+    "first_suspicious_txn_id": "3553342",
+    "connected_card_ids": [],
+    "connected_device_profiles": [],
+    "exposure_usd": 30.91,
+    "evidence": [
+      {
+        "claim": "Flagged transaction 3553342 is $30.91, in_person, risk score 0.55.",
+        "source": "graph",
+        "ref": "query:alert_context",
+        "entity_ids": [
+          "3553342",
+          "C05876-K2",
+          "C05876"
+        ]
+      },
+      {
+        "claim": "Card C05876-K2 has 988 indexed transactions in the retained history.",
+        "source": "graph",
+        "ref": "query:card_history",
+        "entity_ids": [
+          "C05876-K2"
+        ]
+      },
+      {
+        "claim": "Device evidence unavailable; no usable identity record is attached to the flagged transaction or affected sequence.",
+        "source": "graph",
+        "ref": "query:alert_context",
+        "entity_ids": [
+          "3553342"
+        ]
+      },
+      {
+        "claim": "Flagged billing region 494.0 is not present in the card's preceding retained history.",
+        "source": "graph",
+        "ref": "query:region_connected_cards",
+        "entity_ids": [
+          "3553342",
+          "494.0"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-0003 with outcome cleared and pattern .",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-0003"
+        ]
+      },
+      {
+        "claim": "Retrieved closed case CC-2370 with outcome confirmed_fraud and pattern card_not_present_fraud.",
+        "source": "graph",
+        "ref": "query:similar_closed_cases",
+        "entity_ids": [
+          "CC-2370"
+        ]
+      }
+    ],
+    "similar_prior_cases": [
+      "CC-0003",
+      "CC-2370"
+    ],
+    "summary": "HHG-012 is assessed as uncertain with probability 0.53. Pattern: out_of_region_use. Identified exposure is $30.91; device state is unavailable.",
+    "written_to_graph": false,
+    "graph_case_id": "",
+    "graph_write": {
+      "written": false,
+      "reason": "TigerGraph connection is not configured."
+    }
+  },
+  "evidence_requests": [
+    {
+      "type": "customer_validation",
+      "asked_after_step": 1,
+      "assumed_response": "No customer response is available in the benchmark; retain the uncertain decision."
+    }
+  ],
+  "next_best_actions": {
+    "initial": [
+      {
+        "action": "VERIFY_WITH_CUSTOMER",
+        "route": "auto",
+        "reason": "R1: evidence is not decisive and probability is below the blocking threshold."
+      }
+    ],
+    "final": [
+      {
+        "action": "VERIFY_WITH_CUSTOMER",
+        "route": "auto",
+        "reason": "R1: evidence is not decisive and probability is below the blocking threshold."
+      },
+      {
+        "action": "CREATE_CASE",
+        "route": "auto",
+        "reason": "A requested evidence step requires an internal case under policy 3a."
+      }
+    ],
+    "what_changed": "Final actions reflect the evidence request and policy case requirement; no response was assumed."
+  },
+  "sar": {
+    "file": false,
+    "reason": "No benchmark SAR trigger is supported by the retained evidence under the policy.",
+    "narrative": "",
+    "subjects": [],
+    "total_amount_usd": 0,
+    "activity_dates": []
+  },
+  "stop_reason": "Investigation reached an evidence dead end; no customer response or usable device evidence is available.",
+  "tool_calls": 5,
+  "tokens": 0,
+  "latency_s": 0.0
+}
