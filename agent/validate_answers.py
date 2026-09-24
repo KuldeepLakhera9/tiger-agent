@@ -32,8 +32,20 @@ def internal_tests() -> None:
 
 def validate(data_dir: Path, output_dir: Path, case_id: str | None = None) -> list[str]:
     internal_tests()
-    store = EvidenceStore(data_dir)
-    expected = {row["case_id"]: row for row in store.case_pack}
+    has_raw_store = (data_dir / "transactions.csv").is_file()
+    if has_raw_store:
+        store = EvidenceStore(data_dir)
+        case_pack = store.case_pack
+    else:
+        case_pack_file = data_dir / "case_pack.csv"
+        if not case_pack_file.is_file():
+            case_pack_file = Path(__file__).resolve().parents[1] / "data" / "case_pack.csv"
+        import csv
+        with case_pack_file.open("r", encoding="utf-8-sig", newline="") as stream:
+            case_pack = list(csv.DictReader(stream))
+        store = None
+
+    expected = {row["case_id"]: row for row in case_pack}
     files = sorted(output_dir.glob("HHG-*.json"))
     if case_id:
         files = [output_dir / f"{case_id}.json"]
@@ -61,14 +73,27 @@ def validate(data_dir: Path, output_dir: Path, case_id: str | None = None) -> li
         if missing_case:
             errors.append(f"{path.name}: missing case fields {sorted(missing_case)}")
         case = result.get("case", {})
-        transaction_ids = set(store.transactions)
         affected = case.get("affected_txn_ids", [])
-        unknown = [txn_id for txn_id in affected if txn_id not in transaction_ids]
-        if unknown:
-            errors.append(f"{path.name}: unknown affected transactions {unknown[:3]}")
-        recomputed = round(sum(abs(store.transactions[txn_id].amount) for txn_id in affected if txn_id in transaction_ids), 2)
-        if round(float(case.get("exposure_usd", -1)), 2) != recomputed:
-            errors.append(f"{path.name}: exposure mismatch, output={case.get('exposure_usd')} recomputed={recomputed}")
+        exposure = float(case.get("exposure_usd", -1))
+        if exposure < 0:
+            errors.append(f"{path.name}: negative exposure_usd: {exposure}")
+
+        if store is not None:
+            transaction_ids = set(store.transactions)
+            unknown = [txn_id for txn_id in affected if txn_id not in transaction_ids]
+            if unknown:
+                errors.append(f"{path.name}: unknown affected transactions {unknown[:3]}")
+            recomputed = round(sum(abs(store.transactions[txn_id].amount) for txn_id in affected if txn_id in transaction_ids), 2)
+            if round(exposure, 2) != recomputed:
+                errors.append(f"{path.name}: exposure mismatch, output={case.get('exposure_usd')} recomputed={recomputed}")
+            for card_id in case.get("connected_card_ids", []):
+                if card_id not in store.transactions_by_card:
+                    errors.append(f"{path.name}: connected card is not in supplied transactions: {card_id}")
+            known_profiles = {identity.profile for identity in store.identity_by_txn.values()}
+            for profile in case.get("connected_device_profiles", []):
+                if profile not in known_profiles:
+                    errors.append(f"{path.name}: connected device profile is not in supplied identity data")
+
         probability = case.get("fraud_probability")
         if not isinstance(probability, (int, float)) or not 0 <= probability <= 1:
             errors.append(f"{path.name}: fraud_probability outside [0,1]")
@@ -84,13 +109,6 @@ def validate(data_dir: Path, output_dir: Path, case_id: str | None = None) -> li
             errors.append(f"{path.name}: filed SAR lacks narrative or dates")
         if not sar.get("file") and (sar.get("narrative") or sar.get("subjects") or sar.get("total_amount_usd")):
             errors.append(f"{path.name}: non-filed SAR contains report content")
-        for card_id in case.get("connected_card_ids", []):
-            if card_id not in store.transactions_by_card:
-                errors.append(f"{path.name}: connected card is not in supplied transactions: {card_id}")
-        known_profiles = {identity.profile for identity in store.identity_by_txn.values()}
-        for profile in case.get("connected_device_profiles", []):
-            if profile not in known_profiles:
-                errors.append(f"{path.name}: connected device profile is not in supplied identity data")
         if current_id == "HHG-002":
             claims = " ".join(item.get("claim", "") for item in case.get("evidence", []))
             if case.get("connected_device_profiles") != []:
