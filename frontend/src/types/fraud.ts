@@ -67,6 +67,7 @@ export interface BenchmarkCase {
   risk_score?: number;
   amount?: number;
   channel?: string;
+  lifecycle_stage?: string;
 }
 
 export interface CaseSummary {
@@ -88,6 +89,7 @@ export interface CaseSummary {
   opened_at: string;
   connected_devices_count: number;
   connected_cards_count: number;
+  lifecycle_stage?: string;
 }
 
 export interface GraphNode {
@@ -127,10 +129,48 @@ export interface TimelineEvent {
   timestamp: string;
   title: string;
   description: string;
-  type: 'alert' | 'query' | 'analysis' | 'policy' | 'action';
+  type: 'alert' | 'query' | 'analysis' | 'policy' | 'action' | 'controlled_action' | 'lifecycle' | string;
   ref?: string;
   badge?: string;
   claim?: string;
+  actor?: string;
+  stage?: string;
+  decision?: string;
+  recommendation?: string;
+}
+
+export interface CaseActionRequest {
+  action: string;
+  actor?: string;
+  notes?: string;
+  approval_route?: string;
+  simulated_outcome?: string;
+}
+
+export interface CaseActionResponse {
+  success: boolean;
+  case_id: string;
+  action: string;
+  new_status: string;
+  lifecycle_stage: string;
+  message: string;
+  audit_event: TimelineEvent;
+  what_changed?: string;
+  is_simulated?: boolean;
+}
+
+export interface SystemHealth {
+  status: string;
+  service: string;
+  cases_loaded: number;
+  tigergraph: {
+    configured: boolean;
+    connected: boolean;
+    graph: string;
+    host: string;
+    message: string;
+  };
+  mode: 'live_tigergraph' | 'deterministic_benchmark' | string;
 }
 
 export interface AnalyticsOverview {

@@ -1,14 +1,17 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import {
-  AlertTriangle,
   Bot,
+  Check,
   CheckCircle2,
   ChevronRight,
   Clock3,
   FileText,
+  HelpCircle,
   History,
   Network,
+  PhoneCall,
+  RefreshCw,
   Shield,
   User,
   Zap,
@@ -17,10 +20,21 @@ import { apiService } from '../services/apiService';
 import { FraudGraphCanvas } from '../components/graph/FraudGraphCanvas';
 import type {
   BenchmarkCase,
+  CaseActionResponse,
   GraphResponse,
   HistoricalCase,
   TimelineEvent,
 } from '../types/fraud';
+
+const LIFECYCLE_STAGES = [
+  { key: 'ALERTED', label: '1. Alerted', desc: 'Initial trigger' },
+  { key: 'INVESTIGATING', label: '2. Investigating', desc: 'Graph traversal' },
+  { key: 'EVIDENCE_GATHERED', label: '3. Evidence Gathered', desc: 'Subgraph mapped' },
+  { key: 'REVIEW', label: '4. Review', desc: 'Uncertainty check' },
+  { key: 'ACTION_RECOMMENDED', label: '5. Action Recommended', desc: 'Policy evaluated' },
+  { key: 'ACTION_APPROVED', label: '6. Action Approved', desc: 'L1/L2 sign-off' },
+  { key: 'RESOLVED', label: '7. Resolved', desc: 'Docket closed' },
+];
 
 export function InvestigationWorkspace() {
   const { id = 'HHG-002' } = useParams<{ id: string }>();
@@ -29,34 +43,90 @@ export function InvestigationWorkspace() {
   const [timelineEvents, setTimelineEvents] = useState<TimelineEvent[]>([]);
   const [historicalCases, setHistoricalCases] = useState<HistoricalCase[]>([]);
   const [loading, setLoading] = useState(true);
-  const [simulatedActionStatus, setSimulatedActionStatus] = useState<string | null>(null);
+  const [actionInProgress, setActionInProgress] = useState(false);
+  const [actionFeedback, setActionFeedback] = useState<CaseActionResponse | null>(null);
 
-  useEffect(() => {
-    let mounted = true;
+  const loadCase = (caseId: string) => {
     setLoading(true);
-    setSimulatedActionStatus(null);
+    setActionFeedback(null);
 
     Promise.all([
-      apiService.getCase(id),
-      apiService.getGraph(id),
-      apiService.getTimeline(id),
+      apiService.getCase(caseId),
+      apiService.getGraph(caseId),
+      apiService.getTimeline(caseId),
       apiService.getHistoricalCases(),
     ])
       .then(([c, g, t, h]) => {
-        if (!mounted) return;
         setCaseData(c);
         setGraphData(g);
         setTimelineEvents(t);
         setHistoricalCases(h);
       })
       .finally(() => {
-        if (mounted) setLoading(false);
+        setLoading(false);
       });
+  };
 
-    return () => {
-      mounted = false;
-    };
+  useEffect(() => {
+    loadCase(id);
   }, [id]);
+
+  const handleExecuteAction = async (actionName: string, actor = 'Fraud Analyst (L1)', notes?: string) => {
+    if (!caseData) return;
+    setActionInProgress(true);
+    try {
+      const res = await apiService.executeCaseAction(caseData.case_id, {
+        action: actionName,
+        actor,
+        notes,
+        approval_route: caseData.next_best_actions.final[0]?.route || 'auto',
+      });
+      setActionFeedback(res);
+
+      // Refresh case data and timeline
+      const [updatedCase, updatedTimeline] = await Promise.all([
+        apiService.getCase(caseData.case_id),
+        apiService.getTimeline(caseData.case_id),
+      ]);
+      if (updatedCase) setCaseData(updatedCase);
+      if (updatedTimeline) setTimelineEvents(updatedTimeline);
+    } catch (err) {
+      console.error('Failed to execute action:', err);
+    } finally {
+      setActionInProgress(false);
+    }
+  };
+
+  const handleSetLifecycleStage = async (stage: string) => {
+    if (!caseData) return;
+    setActionInProgress(true);
+    try {
+      await apiService.updateCaseLifecycle(caseData.case_id, stage, 'Fraud Lead');
+      const [updatedCase, updatedTimeline] = await Promise.all([
+        apiService.getCase(caseData.case_id),
+        apiService.getTimeline(caseData.case_id),
+      ]);
+      if (updatedCase) setCaseData(updatedCase);
+      if (updatedTimeline) setTimelineEvents(updatedTimeline);
+    } catch (err) {
+      console.error('Failed to update stage:', err);
+    } finally {
+      setActionInProgress(false);
+    }
+  };
+
+  const handleResetCase = async () => {
+    if (!caseData) return;
+    setActionInProgress(true);
+    try {
+      await apiService.resetCase(caseData.case_id);
+      loadCase(caseData.case_id);
+    } catch (err) {
+      console.error('Failed to reset case:', err);
+    } finally {
+      setActionInProgress(false);
+    }
+  };
 
   if (loading) {
     return (
@@ -92,12 +162,20 @@ export function InvestigationWorkspace() {
     amount = 0,
     risk_score = 0,
     channel = 'online',
+    lifecycle_stage = 'ACTION_RECOMMENDED',
   } = caseData;
 
   const finalAction = nba.final && nba.final.length > 0 ? nba.final[0] : null;
   const isFraud = detail.verdict === 'fraud';
   const isUncertain = detail.verdict === 'uncertain';
   const probPercent = Math.round(detail.fraud_probability * 100);
+  const isHHG002 = caseData.case_id === 'HHG-002';
+
+  // Current stage index in lifecycle
+  const currentStageIndex = Math.max(
+    0,
+    LIFECYCLE_STAGES.findIndex((s) => s.key === lifecycle_stage.toUpperCase())
+  );
 
   // Relevant historical cases
   const relevantHistorical = historicalCases.filter((h) =>
@@ -118,8 +196,8 @@ export function InvestigationWorkspace() {
           <span className="text-cyan-400">Explainable Decision Engine</span>
         </div>
 
-        {/* Quick Case Switcher */}
-        <div className="flex items-center gap-2">
+        {/* Quick Case Switcher & Reset Button */}
+        <div className="flex flex-wrap items-center gap-2">
           <span className="text-[11px] uppercase tracking-wider text-slate-500">Quick Select:</span>
           {['HHG-001', 'HHG-002', 'HHG-005', 'HHG-010', 'HHG-011'].map((cid) => (
             <Link
@@ -134,8 +212,70 @@ export function InvestigationWorkspace() {
               {cid}
             </Link>
           ))}
+          <button
+            onClick={handleResetCase}
+            disabled={actionInProgress}
+            title="Reset case to baseline state"
+            className="flex items-center gap-1 rounded-lg border border-slate-800 bg-slate-900/80 px-2.5 py-1 text-xs text-slate-400 hover:border-amber-500/40 hover:text-amber-300 transition"
+          >
+            <RefreshCw size={12} className={actionInProgress ? 'animate-spin' : ''} />
+            Reset State
+          </button>
         </div>
       </div>
+
+      {/* Case Lifecycle Stepper */}
+      <section className="rounded-2xl border border-slate-800 bg-slate-900/80 p-4 shadow-xl backdrop-blur">
+        <div className="flex items-center justify-between border-b border-slate-800/80 pb-3">
+          <div className="flex items-center gap-2">
+            <Clock3 size={15} className="text-cyan-400" />
+            <h3 className="text-xs font-bold uppercase tracking-wider text-white">
+              Case Lifecycle & Investigation Progression
+            </h3>
+          </div>
+          <span className="rounded bg-slate-800 px-2 py-0.5 text-[10px] font-semibold text-slate-300">
+            Current Stage: <strong className="text-cyan-300 uppercase">{lifecycle_stage}</strong>
+          </span>
+        </div>
+
+        <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-7">
+          {LIFECYCLE_STAGES.map((stg, idx) => {
+            const isCompleted = idx < currentStageIndex;
+            const isCurrent = idx === currentStageIndex;
+
+            return (
+              <button
+                key={stg.key}
+                onClick={() => handleSetLifecycleStage(stg.key)}
+                disabled={actionInProgress}
+                className={`relative flex flex-col items-start rounded-xl p-2.5 text-left transition ${
+                  isCurrent
+                    ? 'border border-cyan-400/50 bg-cyan-400/10 text-cyan-200 ring-2 ring-cyan-400/20 shadow-lg'
+                    : isCompleted
+                    ? 'border border-emerald-500/30 bg-emerald-500/5 text-emerald-300 hover:border-emerald-500/50'
+                    : 'border border-slate-800/70 bg-slate-950/60 text-slate-500 hover:border-slate-700 hover:text-slate-300'
+                }`}
+              >
+                <div className="flex items-center gap-1.5">
+                  <div
+                    className={`flex h-4 w-4 items-center justify-center rounded-full text-[9px] font-bold ${
+                      isCurrent
+                        ? 'bg-cyan-400 text-slate-950'
+                        : isCompleted
+                        ? 'bg-emerald-500 text-slate-950'
+                        : 'bg-slate-800 text-slate-400'
+                    }`}
+                  >
+                    {isCompleted ? <Check size={10} /> : idx + 1}
+                  </div>
+                  <span className="text-[11px] font-bold tracking-tight">{stg.label.split('. ')[1]}</span>
+                </div>
+                <span className="mt-1 text-[9px] text-slate-400 line-clamp-1">{stg.desc}</span>
+              </button>
+            );
+          })}
+        </div>
+      </section>
 
       {/* Hero Header with Prominent Risk & Probability */}
       <section className="rounded-2xl border border-slate-800 bg-gradient-to-b from-slate-900/90 to-slate-950/90 p-5 shadow-2xl backdrop-blur">
@@ -166,7 +306,7 @@ export function InvestigationWorkspace() {
                 </span>
               )}
               <span className="rounded-lg border border-slate-800 bg-slate-900 px-2.5 py-1 text-xs font-medium text-slate-400">
-                Pattern: <strong className="text-slate-200">{detail.pattern}</strong>
+                Pattern: <strong className="text-slate-200">{detail.pattern.replace(/_/g, ' ')}</strong>
               </span>
             </div>
             <h1 className="mt-3 text-2xl font-bold tracking-tight text-white sm:text-3xl">
@@ -220,13 +360,13 @@ export function InvestigationWorkspace() {
             <div className="min-w-[200px] rounded-xl border border-cyan-500/30 bg-cyan-500/10 p-3.5 text-left shadow-lg">
               <div className="flex items-center gap-1.5">
                 <Zap size={14} className="text-cyan-300" />
-                <span className="text-[10px] font-bold uppercase tracking-wider text-cyan-300">Next Best Action</span>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-cyan-300">Recommended Action</span>
               </div>
               <p className="mt-1 text-base font-bold text-white">
                 {finalAction ? finalAction.action : 'REVIEW'}
               </p>
               <p className="mt-0.5 text-[10px] text-slate-300">
-                Route: <strong className="text-cyan-200 uppercase">{finalAction ? finalAction.route : 'auto'}</strong>
+                Approval: <strong className="text-cyan-200 uppercase">{finalAction ? finalAction.route : 'auto'}</strong>
               </p>
             </div>
           </div>
@@ -261,9 +401,41 @@ export function InvestigationWorkspace() {
         </div>
       </section>
 
+      {/* Action Execution Feedback Banner */}
+      {actionFeedback && (
+        <section className="rounded-xl border border-emerald-500/40 bg-emerald-500/10 p-4 shadow-lg">
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex items-start gap-3">
+              <div className="rounded-lg bg-emerald-500/20 p-2 text-emerald-300">
+                <CheckCircle2 size={18} />
+              </div>
+              <div>
+                <p className="text-xs font-bold uppercase tracking-wider text-emerald-300">
+                  {actionFeedback.audit_event.title}
+                </p>
+                <p className="mt-1 text-xs text-slate-200 leading-relaxed">
+                  {actionFeedback.audit_event.description}
+                </p>
+                {actionFeedback.what_changed && (
+                  <p className="mt-2 text-[11px] font-semibold text-cyan-300">
+                    What Changed: {actionFeedback.what_changed}
+                  </p>
+                )}
+              </div>
+            </div>
+            <button
+              onClick={() => setActionFeedback(null)}
+              className="text-xs text-slate-400 hover:text-white"
+            >
+              ✕
+            </button>
+          </div>
+        </section>
+      )}
+
       {/* Main 3-Column Layout */}
       <div className="grid grid-cols-12 gap-6">
-        {/* LEFT: Case Context & History */}
+        {/* LEFT: Case Context & Uncertainty Audit */}
         <div className="col-span-12 space-y-6 lg:col-span-3">
           <section className="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 shadow-xl backdrop-blur">
             <div className="flex items-center gap-2 border-b border-slate-800 pb-3">
@@ -298,12 +470,12 @@ export function InvestigationWorkspace() {
                 )}
               </div>
               <div>
-                <p className="text-[10px] uppercase tracking-wider text-slate-500">Device Identity</p>
-                {caseData.case_id === 'HHG-002' || detail.connected_device_profiles.length === 0 ? (
+                <p className="text-[10px] uppercase tracking-wider text-slate-500">Device Identity Status</p>
+                {isHHG002 || detail.connected_device_profiles.length === 0 ? (
                   <div className="mt-1.5 rounded-lg border border-amber-500/20 bg-amber-500/5 p-2.5 text-amber-300">
                     <p className="font-semibold">Device evidence unavailable</p>
                     <p className="mt-1 text-[11px] text-slate-400">
-                      No usable identity record attached. Not a shared-device signal.
+                      Truthful graph state: No usable identity record attached. Zero device nodes rendered.
                     </p>
                   </div>
                 ) : (
@@ -339,17 +511,39 @@ export function InvestigationWorkspace() {
             )}
           </section>
 
-          {/* Model Risk Warning */}
-          <div className="rounded-xl border border-amber-500/20 bg-amber-500/5 p-4 text-xs leading-relaxed text-amber-200/90 shadow-lg">
-            <div className="flex items-center gap-2 font-bold text-amber-300">
-              <AlertTriangle size={15} />
-              Model Risk Notice
+          {/* Explicit Uncertainty Breakdown Card */}
+          <section className="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 shadow-xl backdrop-blur text-xs">
+            <div className="flex items-center gap-2 border-b border-slate-800 pb-3">
+              <HelpCircle size={16} className="text-amber-400" />
+              <h2 className="text-sm font-bold text-white">Uncertainty & Evidence Check</h2>
             </div>
-            <p className="mt-2 text-slate-300">
-              The risk score ({risk_score.toFixed(2)}) is a preliminary signal, not a final determination. Full
-              verdict requires graph relationships and policy evaluation.
+
+            <div className="mt-4 space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="text-slate-400">Graph Evidence:</span>
+                <span className="font-semibold text-emerald-400">AVAILABLE</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-slate-400">Device Telemetry:</span>
+                <span className={`font-semibold ${isHHG002 ? 'text-amber-400' : 'text-slate-300'}`}>
+                  {isHHG002 ? 'UNAVAILABLE' : detail.connected_device_profiles.length > 0 ? 'AVAILABLE' : 'NOT PRESENT'}
+                </span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-slate-400">Typology Confidence:</span>
+                <span className="font-semibold text-amber-300">{isUncertain ? 'MEDIUM' : 'HIGH'}</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-slate-400">Policy Recommendation:</span>
+                <span className="font-semibold text-cyan-300">CONFIDENT (R1)</span>
+              </div>
+            </div>
+
+            <p className="mt-3 border-t border-slate-800/80 pt-3 text-[11px] leading-relaxed text-slate-400">
+              Uncertainty is treated as a first-class feature. Rather than pretending certainty, the agent requests
+              controlled evidence gathering before executing irreversible account interventions.
             </p>
-          </div>
+          </section>
         </div>
 
         {/* CENTER: Relationship Graph Canvas */}
@@ -378,8 +572,85 @@ export function InvestigationWorkspace() {
           )}
         </div>
 
-        {/* RIGHT: Investigation Copilot & Explainability */}
+        {/* RIGHT: Investigation Copilot & Controlled Actions Hub */}
         <div className="col-span-12 space-y-6 lg:col-span-3">
+          {/* Controlled Actions Hub */}
+          <section className="rounded-2xl border border-cyan-500/30 bg-gradient-to-b from-cyan-950/20 to-slate-900/80 p-5 shadow-xl backdrop-blur">
+            <div className="flex items-center justify-between border-b border-cyan-500/20 pb-3">
+              <div className="flex items-center gap-2">
+                <Zap size={16} className="text-cyan-400" />
+                <h2 className="text-sm font-bold text-white">Action & Intervention Hub</h2>
+              </div>
+              <span className="rounded bg-cyan-400/20 px-1.5 py-0.5 text-[9px] font-bold uppercase text-cyan-300">
+                Decision vs Execution
+              </span>
+            </div>
+
+            <div className="mt-4 space-y-3">
+              <div>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                  Recommended Action
+                </span>
+                <p className="mt-1 text-base font-extrabold text-cyan-200">
+                  {finalAction ? finalAction.action : 'REVIEW'}
+                </p>
+                <p className="mt-0.5 text-[11px] text-slate-300">
+                  {finalAction ? finalAction.reason : 'Standard policy evaluation.'}
+                </p>
+              </div>
+
+              {/* Primary Action Button */}
+              <div className="pt-2">
+                <button
+                  onClick={() => handleExecuteAction(finalAction ? finalAction.action : 'VERIFY_WITH_CUSTOMER')}
+                  disabled={actionInProgress}
+                  className="w-full rounded-xl bg-cyan-400 py-3 text-xs font-bold text-slate-950 transition hover:bg-cyan-300 active:scale-[0.98] shadow-lg shadow-cyan-400/10 flex items-center justify-center gap-1.5"
+                >
+                  <PhoneCall size={14} />
+                  Execute: {finalAction ? finalAction.action : 'Verify'}
+                  <span className="text-[10px] opacity-75">(Simulated Action)</span>
+                </button>
+              </div>
+
+              {/* Secondary Controlled Actions Buttons */}
+              <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-800">
+                <button
+                  onClick={() => handleExecuteAction('APPROVE_ACTION', 'Fraud Manager (L2)', 'L2 Manager approved policy action.')}
+                  disabled={actionInProgress}
+                  className="rounded-lg border border-slate-700 bg-slate-800/80 py-2 px-2 text-[10px] font-semibold text-slate-200 hover:border-cyan-400 hover:text-white transition text-center"
+                >
+                  Approve (L2 Sign-off)
+                </button>
+                <button
+                  onClick={() => handleExecuteAction('REQUEST_ADDITIONAL_EVIDENCE', 'Fraud Analyst (L1)', 'Requested telemetry and carrier verification.')}
+                  disabled={actionInProgress}
+                  className="rounded-lg border border-slate-700 bg-slate-800/80 py-2 px-2 text-[10px] font-semibold text-slate-200 hover:border-cyan-400 hover:text-white transition text-center"
+                >
+                  Request Telemetry
+                </button>
+                <button
+                  onClick={() => handleExecuteAction('BLOCK_CARD', 'Fraud Lead (L1)', 'Restricted payment card on all channels.')}
+                  disabled={actionInProgress}
+                  className="rounded-lg border border-rose-500/30 bg-rose-500/10 py-2 px-2 text-[10px] font-semibold text-rose-300 hover:bg-rose-500/20 transition text-center"
+                >
+                  Block Card (L1)
+                </button>
+                <button
+                  onClick={() => handleExecuteAction('RESOLVE_CASE', 'Fraud Lead', 'Investigation resolved and docket archived.')}
+                  disabled={actionInProgress}
+                  className="rounded-lg border border-emerald-500/30 bg-emerald-500/10 py-2 px-2 text-[10px] font-semibold text-emerald-300 hover:bg-emerald-500/20 transition text-center"
+                >
+                  Resolve Case
+                </button>
+              </div>
+
+              <p className="text-center text-[10px] text-slate-500 pt-1">
+                Controlled actions are simulated for audit demonstration. Does not mutate live ledger.
+              </p>
+            </div>
+          </section>
+
+          {/* Investigation Copilot Checklist */}
           <section className="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 shadow-xl backdrop-blur">
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <div className="flex items-center gap-2">
@@ -387,30 +658,23 @@ export function InvestigationWorkspace() {
                 <h2 className="text-sm font-bold text-white">Investigation Copilot</h2>
               </div>
               <span className="rounded-full bg-cyan-400/10 px-2 py-0.5 text-[10px] font-bold text-cyan-300">
-                Active Audit
+                Audited
               </span>
             </div>
 
-            {/* Checklist */}
             <div className="mt-4 space-y-2.5">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                Investigation Checklist
-              </span>
               {[
                 { title: 'Transaction context retrieved', done: true },
                 { title: 'Card history examined', done: true },
                 {
-                  title:
-                    caseData.case_id === 'HHG-002'
-                      ? 'Device evaluated (unavailable)'
-                      : 'Relationship evidence evaluated',
+                  title: isHHG002 ? 'Device evaluated (unavailable)' : 'Relationship evidence evaluated',
                   done: true,
                 },
                 {
                   title: 'Historical cases checked',
                   done: detail.similar_prior_cases.length > 0,
                 },
-                { title: `Pattern classified: ${detail.pattern}`, done: true },
+                { title: `Pattern classified: ${detail.pattern.replace(/_/g, ' ')}`, done: true },
                 { title: 'Policy rules evaluated', done: true },
                 {
                   title: `Action: ${finalAction ? finalAction.action : 'Decided'}`,
@@ -431,7 +695,7 @@ export function InvestigationWorkspace() {
               ))}
             </div>
 
-            {/* Regulatory Filing Decision (SAR) */}
+            {/* Regulatory SAR Decision */}
             <div className="mt-6 border-t border-slate-800 pt-4">
               <div className="flex items-center justify-between">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-purple-400">
@@ -439,9 +703,7 @@ export function InvestigationWorkspace() {
                 </span>
                 <span
                   className={`rounded px-1.5 py-0.5 text-[10px] font-bold uppercase ${
-                    sar.file
-                      ? 'bg-purple-500/20 text-purple-300'
-                      : 'bg-slate-800 text-slate-400'
+                    sar.file ? 'bg-purple-500/20 text-purple-300' : 'bg-slate-800 text-slate-400'
                   }`}
                 >
                   {sar.file ? 'SAR Required' : 'No SAR'}
@@ -471,14 +733,17 @@ export function InvestigationWorkspace() {
         </div>
       </div>
 
-      {/* BOTTOM SECTION: Evidence Timeline + Institutional Memory + Next Best Action */}
+      {/* BOTTOM SECTION: Live Timeline & Audit Trail + Institutional Memory */}
       <div className="grid grid-cols-12 gap-6">
-        {/* Evidence Timeline */}
-        <div className="col-span-12 lg:col-span-6">
+        {/* Evidence Timeline & Audit Trail */}
+        <div className="col-span-12 lg:col-span-8">
           <section className="h-full rounded-2xl border border-slate-800 bg-slate-900/70 p-5 shadow-xl backdrop-blur">
-            <div className="flex items-center gap-2 border-b border-slate-800 pb-3">
-              <Clock3 size={16} className="text-cyan-400" />
-              <h2 className="text-sm font-bold text-white">Evidence Timeline</h2>
+            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+              <div className="flex items-center gap-2">
+                <Clock3 size={16} className="text-cyan-400" />
+                <h2 className="text-sm font-bold text-white">Investigation Timeline & Audit Trail</h2>
+              </div>
+              <span className="text-xs text-slate-400">{timelineEvents.length} Recorded Events</span>
             </div>
 
             <div className="mt-5 space-y-4">
@@ -489,21 +754,41 @@ export function InvestigationWorkspace() {
                     className={`relative z-10 mt-1 h-3 w-3 rounded-full border-2 border-slate-950 ${
                       evt.type === 'alert'
                         ? 'bg-amber-400 ring-2 ring-amber-400/30'
-                        : evt.type === 'action' || evt.type === 'policy'
+                        : evt.type === 'controlled_action'
+                        ? 'bg-emerald-400 ring-2 ring-emerald-400/40'
+                        : evt.type === 'lifecycle'
                         ? 'bg-cyan-400 ring-2 ring-cyan-400/30'
+                        : evt.type === 'action' || evt.type === 'policy'
+                        ? 'bg-violet-400 ring-2 ring-violet-400/30'
                         : 'bg-slate-400'
                     }`}
                   />
                   <div className="flex-1 pb-3">
                     <div className="flex flex-wrap items-center justify-between gap-2">
                       <p className="text-xs font-bold text-white">{evt.title}</p>
-                      {evt.badge && (
-                        <span className="rounded bg-slate-800 px-1.5 py-0.5 text-[9px] font-semibold text-slate-300">
-                          {evt.badge}
-                        </span>
-                      )}
+                      <div className="flex items-center gap-1.5">
+                        {evt.actor && (
+                          <span className="rounded bg-slate-800/80 px-1.5 py-0.5 text-[9px] font-medium text-cyan-300">
+                            Actor: {evt.actor}
+                          </span>
+                        )}
+                        {evt.badge && (
+                          <span
+                            className={`rounded px-1.5 py-0.5 text-[9px] font-semibold ${
+                              evt.badge === 'AUDIT TRAIL'
+                                ? 'bg-emerald-500/20 text-emerald-300'
+                                : evt.badge === 'LIFECYCLE'
+                                ? 'bg-cyan-500/20 text-cyan-300'
+                                : 'bg-slate-800 text-slate-300'
+                            }`}
+                          >
+                            {evt.badge}
+                          </span>
+                        )}
+                      </div>
                     </div>
-                    <p className="mt-1 text-xs text-slate-400 leading-relaxed">{evt.description}</p>
+                    <p className="mt-1 text-xs text-slate-300 leading-relaxed">{evt.description}</p>
+                    <p className="mt-1 text-[10px] text-slate-500">{evt.timestamp}</p>
                   </div>
                 </div>
               ))}
@@ -512,7 +797,7 @@ export function InvestigationWorkspace() {
         </div>
 
         {/* Institutional Memory (Historical Cases) */}
-        <div className="col-span-12 lg:col-span-3">
+        <div className="col-span-12 lg:col-span-4">
           <section className="h-full rounded-2xl border border-slate-800 bg-slate-900/70 p-5 shadow-xl backdrop-blur">
             <div className="flex items-center gap-2 border-b border-slate-800 pb-3">
               <History size={16} className="text-fuchsia-400" />
@@ -562,71 +847,6 @@ export function InvestigationWorkspace() {
                   </p>
                 </div>
               )}
-            </div>
-          </section>
-        </div>
-
-        {/* Next Best Action Card (Interactive with Demo Action CTA) */}
-        <div className="col-span-12 lg:col-span-3">
-          <section className="h-full rounded-2xl border border-cyan-500/30 bg-gradient-to-b from-cyan-950/30 to-slate-900/80 p-5 shadow-xl backdrop-blur">
-            <div className="flex items-center gap-2 border-b border-cyan-500/20 pb-3">
-              <Zap size={16} className="text-cyan-400" />
-              <h2 className="text-sm font-bold text-white">Next Best Action (NBA)</h2>
-            </div>
-
-            <div className="mt-4 space-y-4">
-              <div>
-                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                  Recommended Action
-                </span>
-                <p className="mt-1 text-lg font-extrabold text-cyan-200">
-                  {finalAction ? finalAction.action : 'REVIEW'}
-                </p>
-              </div>
-
-              <div>
-                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                  Approval Route
-                </span>
-                <p className="mt-1 text-xs font-semibold uppercase text-slate-200">
-                  {finalAction ? finalAction.route : 'auto'}
-                </p>
-              </div>
-
-              <div>
-                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                  Policy Rule Justification
-                </span>
-                <p className="mt-1 text-xs leading-relaxed text-slate-300">
-                  {finalAction ? finalAction.reason : 'Standard fraud review rules apply.'}
-                </p>
-              </div>
-
-              {/* Primary Interactive CTA */}
-              <div className="border-t border-slate-800 pt-4">
-                <button
-                  onClick={() => {
-                    const actionName = finalAction ? finalAction.action : 'VERIFY';
-                    setSimulatedActionStatus(
-                      `Simulated Action Executed: ${actionName} applied for Case ${caseData.case_id}.`
-                    );
-                  }}
-                  className="w-full rounded-xl bg-cyan-400 py-3 text-xs font-bold text-slate-950 transition hover:bg-cyan-300 active:scale-[0.98]"
-                >
-                  Execute: {finalAction ? finalAction.action : 'Execute Action'}{' '}
-                  <span className="opacity-70">(Demo Action)</span>
-                </button>
-
-                {simulatedActionStatus && (
-                  <div className="mt-3 rounded-lg border border-emerald-500/30 bg-emerald-500/10 p-2.5 text-[11px] text-emerald-300">
-                    {simulatedActionStatus}
-                  </div>
-                )}
-
-                <p className="mt-2 text-center text-[10px] text-slate-500">
-                  Simulated workflow only. Does not mutate real banking ledger.
-                </p>
-              </div>
             </div>
           </section>
         </div>
