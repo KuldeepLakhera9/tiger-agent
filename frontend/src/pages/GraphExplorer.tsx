@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
-import { Layers } from 'lucide-react';
+import { Database, Layers } from 'lucide-react';
 import { apiService } from '../services/apiService';
 import { FraudGraphCanvas } from '../components/graph/FraudGraphCanvas';
-import type { CaseSummary, GraphResponse } from '../types/fraud';
+import type { CaseSummary, GraphResponse, LiveEvidenceResponse } from '../types/fraud';
 
 export function GraphExplorer() {
   const [cases, setCases] = useState<CaseSummary[]>([]);
   const [selectedCaseId, setSelectedCaseId] = useState<string>('HHG-002');
   const [graphData, setGraphData] = useState<GraphResponse | null>(null);
+  const [liveInfo, setLiveInfo] = useState<LiveEvidenceResponse | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -26,10 +27,15 @@ export function GraphExplorer() {
   useEffect(() => {
     let mounted = true;
     setLoading(true);
-    apiService
-      .getGraph(selectedCaseId)
-      .then((g) => {
-        if (mounted) setGraphData(g);
+    Promise.all([
+      apiService.getGraph(selectedCaseId),
+      apiService.getLiveEvidence(selectedCaseId),
+    ])
+      .then(([g, le]) => {
+        if (mounted) {
+          setGraphData(g);
+          setLiveInfo(le);
+        }
       })
       .finally(() => {
         if (mounted) setLoading(false);
@@ -41,6 +47,7 @@ export function GraphExplorer() {
   }, [selectedCaseId]);
 
   const currentCase = cases.find((c) => c.case_id === selectedCaseId);
+
 
   return (
     <div className="mx-auto max-w-7xl space-y-6 p-4 sm:p-6 lg:p-8">
@@ -101,7 +108,18 @@ export function GraphExplorer() {
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
+            <span
+              className={`rounded-lg border px-2.5 py-1 text-xs font-semibold flex items-center gap-1.5 ${
+                liveInfo?.live
+                  ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-300'
+                  : 'border-cyan-500/30 bg-cyan-500/10 text-cyan-300'
+              }`}
+            >
+              <Database size={12} />
+              {liveInfo?.live ? `TigerGraph Live Traversal (${liveInfo.latency_ms}ms)` : 'Deterministic Benchmark Reconstruction'}
+            </span>
+
             {selectedCaseId === 'HHG-002' ? (
               <span className="rounded-lg border border-amber-500/30 bg-amber-500/10 px-2.5 py-1 text-xs font-semibold text-amber-300">
                 Device evidence unavailable (Truthful state)

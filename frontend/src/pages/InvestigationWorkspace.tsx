@@ -6,6 +6,8 @@ import {
   CheckCircle2,
   ChevronRight,
   Clock3,
+  CloudOff,
+  Database,
   FileText,
   HelpCircle,
   History,
@@ -13,6 +15,7 @@ import {
   PhoneCall,
   RefreshCw,
   Shield,
+  Terminal,
   User,
   Zap,
 } from 'lucide-react';
@@ -23,6 +26,9 @@ import type {
   CaseActionResponse,
   GraphResponse,
   HistoricalCase,
+  LiveEvidenceResponse,
+  PersistGraphResponse,
+  TigerGraphQueryResult,
   TimelineEvent,
 } from '../types/fraud';
 
@@ -45,25 +51,67 @@ export function InvestigationWorkspace() {
   const [loading, setLoading] = useState(true);
   const [actionInProgress, setActionInProgress] = useState(false);
   const [actionFeedback, setActionFeedback] = useState<CaseActionResponse | null>(null);
+  const [liveEvidence, setLiveEvidence] = useState<LiveEvidenceResponse | null>(null);
+  const [persistFeedback, setPersistFeedback] = useState<PersistGraphResponse | null>(null);
+  const [selectedQueryTab, setSelectedQueryTab] = useState<'alert_context' | 'card_history' | 'device' | 'region' | 'similar'>('alert_context');
+  const [queryResult, setQueryResult] = useState<TigerGraphQueryResult | null>(null);
+  const [queryLoading, setQueryLoading] = useState(false);
+
+  const loadQueryTab = async (tab: 'alert_context' | 'card_history' | 'device' | 'region' | 'similar', caseId: string) => {
+    setSelectedQueryTab(tab);
+    setQueryLoading(true);
+    try {
+      let res: TigerGraphQueryResult;
+      if (tab === 'alert_context') {
+        const le = await apiService.getLiveEvidence(caseId);
+        res = {
+          live: le.live,
+          source: le.source,
+          query: 'alert_context',
+          case_id: caseId,
+          latency_ms: le.latency_ms,
+          results: le.graph_data || le.evidence,
+          message: le.message,
+        };
+      } else if (tab === 'card_history') {
+        res = await apiService.getTigerGraphCardHistory(caseId);
+      } else if (tab === 'device') {
+        res = await apiService.getTigerGraphDeviceConnections(caseId);
+      } else if (tab === 'region') {
+        res = await apiService.getTigerGraphRegionConnections(caseId);
+      } else {
+        res = await apiService.getTigerGraphSimilarCases(caseId);
+      }
+      setQueryResult(res);
+    } catch (err) {
+      console.error('Failed to load query tab:', err);
+    } finally {
+      setQueryLoading(false);
+    }
+  };
 
   const loadCase = (caseId: string) => {
     setLoading(true);
     setActionFeedback(null);
+    setPersistFeedback(null);
 
     Promise.all([
       apiService.getCase(caseId),
       apiService.getGraph(caseId),
       apiService.getTimeline(caseId),
       apiService.getHistoricalCases(),
+      apiService.getLiveEvidence(caseId),
     ])
-      .then(([c, g, t, h]) => {
+      .then(([c, g, t, h, le]) => {
         setCaseData(c);
         setGraphData(g);
         setTimelineEvents(t);
         setHistoricalCases(h);
+        setLiveEvidence(le);
       })
       .finally(() => {
         setLoading(false);
+        loadQueryTab('alert_context', caseId);
       });
   };
 
@@ -123,6 +171,21 @@ export function InvestigationWorkspace() {
       loadCase(caseData.case_id);
     } catch (err) {
       console.error('Failed to reset case:', err);
+    } finally {
+      setActionInProgress(false);
+    }
+  };
+
+  const handlePersistToGraph = async () => {
+    if (!caseData) return;
+    setActionInProgress(true);
+    try {
+      const res = await apiService.persistCaseToGraph(caseData.case_id);
+      setPersistFeedback(res);
+      const updatedTimeline = await apiService.getTimeline(caseData.case_id);
+      if (updatedTimeline) setTimelineEvents(updatedTimeline);
+    } catch (err) {
+      console.error('Failed to persist case to graph:', err);
     } finally {
       setActionInProgress(false);
     }
@@ -213,6 +276,15 @@ export function InvestigationWorkspace() {
             </Link>
           ))}
           <button
+            onClick={handlePersistToGraph}
+            disabled={actionInProgress}
+            title="Persist completed case to TigerGraph as Graph Memory"
+            className="flex items-center gap-1.5 rounded-lg border border-purple-500/40 bg-purple-500/10 px-2.5 py-1 text-xs font-semibold text-purple-300 hover:bg-purple-500/20 transition shadow-sm"
+          >
+            <Database size={12} />
+            Persist to Graph
+          </button>
+          <button
             onClick={handleResetCase}
             disabled={actionInProgress}
             title="Reset case to baseline state"
@@ -276,6 +348,95 @@ export function InvestigationWorkspace() {
           })}
         </div>
       </section>
+
+      {/* Persist Graph Feedback Alert */}
+      {persistFeedback && (
+        <div
+          className={`flex items-start justify-between rounded-xl border p-4 text-xs shadow-lg transition ${
+            persistFeedback.written
+              ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-200'
+              : 'border-purple-500/40 bg-purple-950/20 text-purple-200'
+          }`}
+        >
+          <div className="flex items-start gap-2.5">
+            <Database size={16} className="mt-0.5 shrink-0 text-purple-400" />
+            <div>
+              <p className="font-bold">
+                {persistFeedback.written ? 'Graph Persistence Confirmed' : 'Graph Persistence Offline (Defensible Fallback)'}
+              </p>
+              <p className="mt-0.5 text-[11px] opacity-90">
+                {persistFeedback.message || persistFeedback.reason}
+              </p>
+            </div>
+          </div>
+          <button
+            onClick={() => setPersistFeedback(null)}
+            className="text-slate-400 hover:text-white text-xs font-bold px-2 py-0.5"
+          >
+            ✕
+          </button>
+        </div>
+      )}
+
+      {/* Evidence Source & TigerGraph Telemetry Ribbon */}
+      <div
+        className={`flex flex-wrap items-center justify-between gap-4 rounded-xl border p-4 text-xs shadow-lg backdrop-blur transition ${
+          liveEvidence?.live
+            ? 'border-emerald-500/40 bg-gradient-to-r from-emerald-950/40 to-slate-900/80 text-emerald-200'
+            : 'border-cyan-500/30 bg-gradient-to-r from-slate-900/90 to-cyan-950/20 text-slate-300'
+        }`}
+      >
+        <div className="flex items-center gap-3">
+          <div
+            className={`flex h-8 w-8 items-center justify-center rounded-lg border ${
+              liveEvidence?.live
+                ? 'border-emerald-400/40 bg-emerald-400/10 text-emerald-300'
+                : 'border-cyan-400/30 bg-cyan-400/10 text-cyan-300'
+            }`}
+          >
+            {liveEvidence?.live ? <Database size={16} /> : <CloudOff size={16} />}
+          </div>
+          <div>
+            <div className="flex flex-wrap items-center gap-2">
+              <span
+                className={`font-black uppercase tracking-wider text-[11px] ${
+                  liveEvidence?.live ? 'text-emerald-400' : 'text-cyan-400'
+                }`}
+              >
+                {liveEvidence?.live ? 'LIVE TIGERGRAPH (REST++)' : 'OFFLINE BENCHMARK FALLBACK'}
+              </span>
+              <span className="rounded bg-slate-800 px-1.5 py-0.5 text-[10px] font-mono text-slate-300">
+                Query: alert_context
+              </span>
+              <span className="rounded bg-slate-800 px-1.5 py-0.5 text-[10px] font-mono text-slate-300">
+                Txn: #{caseData.flagged_txn_id}
+              </span>
+            </div>
+            <p className="mt-0.5 text-[11px] text-slate-400">
+              {liveEvidence?.live
+                ? `Graph neighborhood traversed live. Latency: ${liveEvidence.latency_ms} ms. Customer & card relations verified.`
+                : 'TigerGraph host unreachable or offline — showing verified deterministic benchmark evidence.'}
+            </p>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-3">
+          {liveEvidence?.live && (
+            <div className="text-right">
+              <span className="text-[10px] uppercase text-slate-500">Query Latency</span>
+              <p className="font-mono text-xs font-bold text-emerald-300">{liveEvidence.latency_ms} ms</p>
+            </div>
+          )}
+          <button
+            onClick={() => loadQueryTab('alert_context', caseData.case_id)}
+            disabled={queryLoading}
+            className="flex items-center gap-1.5 rounded-lg border border-slate-700 bg-slate-800/80 px-3 py-1.5 text-xs font-medium text-slate-200 hover:border-cyan-400 hover:text-white transition"
+          >
+            <RefreshCw size={12} className={queryLoading ? 'animate-spin' : ''} />
+            Re-Query Graph
+          </button>
+        </div>
+      </div>
 
       {/* Hero Header with Prominent Risk & Probability */}
       <section className="rounded-2xl border border-slate-800 bg-gradient-to-b from-slate-900/90 to-slate-950/90 p-5 shadow-2xl backdrop-blur">
@@ -851,6 +1012,112 @@ export function InvestigationWorkspace() {
           </section>
         </div>
       </div>
+
+      {/* TIGERGRAPH GSQL QUERY INSPECTOR & TELEMETRY SECTION */}
+      <section className="rounded-2xl border border-slate-800 bg-slate-900/80 p-5 shadow-2xl backdrop-blur">
+        <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-center border-b border-slate-800 pb-4">
+          <div className="flex items-center gap-2.5">
+            <Terminal size={18} className="text-cyan-400" />
+            <div>
+              <h2 className="text-sm font-bold text-white">TigerGraph GSQL Query Inspector</h2>
+              <p className="text-[11px] text-slate-400">
+                Execute and inspect live or deterministic query outputs across the 5 investigative primitives.
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="rounded bg-slate-800 px-2 py-1 text-[10px] font-mono text-slate-300">
+              Graph: <strong>FraudInvestigation</strong>
+            </span>
+            <span
+              className={`rounded px-2 py-1 text-[10px] font-bold ${
+                queryResult?.live
+                  ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
+                  : 'bg-cyan-500/10 text-cyan-300 border border-cyan-500/20'
+              }`}
+            >
+              {queryResult?.live ? 'LIVE TIGERGRAPH' : 'DETERMINISTIC FALLBACK'}
+            </span>
+          </div>
+        </div>
+
+        {/* Query Tabs */}
+        <div className="mt-4 flex flex-wrap gap-2 border-b border-slate-800/80 pb-3">
+          {[
+            { id: 'alert_context', label: '1. alert_context', sig: 'alert_context(txn_id)' },
+            { id: 'card_history', label: '2. card_history', sig: 'card_history(card_id)' },
+            { id: 'device', label: '3. device_connected_cards', sig: 'device_connected_cards(device_id)' },
+            { id: 'region', label: '4. region_connected_cards', sig: 'region_connected_cards(region_id)' },
+            { id: 'similar', label: '5. similar_closed_cases', sig: 'similar_closed_cases(card_id, device_id)' },
+          ].map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => loadQueryTab(tab.id as any, caseData.case_id)}
+              disabled={queryLoading}
+              className={`rounded-xl px-3 py-1.5 text-xs font-semibold transition ${
+                selectedQueryTab === tab.id
+                  ? 'bg-cyan-400 text-slate-950 shadow-md font-bold'
+                  : 'border border-slate-800 bg-slate-950/60 text-slate-400 hover:border-slate-700 hover:text-white'
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Query Output & Inspector View */}
+        <div className="mt-4 space-y-3">
+          <div className="flex flex-wrap items-center justify-between gap-2 text-xs">
+            <div className="flex items-center gap-2">
+              <span className="font-semibold text-slate-400">Signature:</span>
+              <code className="rounded bg-slate-950 px-2 py-0.5 font-mono text-cyan-300">
+                {selectedQueryTab === 'alert_context' && `alert_context("${caseData.flagged_txn_id}")`}
+                {selectedQueryTab === 'card_history' && `card_history("${caseData.card_id}")`}
+                {selectedQueryTab === 'device' && `device_connected_cards("${isHHG002 ? 'NONE' : detail.connected_device_profiles[0] || 'NONE'}")`}
+                {selectedQueryTab === 'region' && `region_connected_cards("444.0")`}
+                {selectedQueryTab === 'similar' && `similar_closed_cases("${caseData.card_id}", "")`}
+              </code>
+            </div>
+            {queryResult && (
+              <span className="text-[11px] text-slate-400">
+                Query Latency: <strong className="font-mono text-emerald-400">{queryResult.latency_ms} ms</strong>
+              </span>
+            )}
+          </div>
+
+          {selectedQueryTab === 'device' && isHHG002 && (
+            <div className="rounded-xl border border-amber-500/40 bg-amber-500/10 p-3.5 text-xs text-amber-200">
+              <p className="font-bold flex items-center gap-1.5">
+                <HelpCircle size={14} className="text-amber-400" />
+                Truthful Anti-Hallucination Invariant (HHG-002)
+              </p>
+              <p className="mt-1 text-[11px] leading-relaxed text-amber-300/90">
+                Case HHG-002 contains no usable device identity records. Zero device profiles or shared device syndicates are inferred.
+                The agent accurately preserves this absence of evidence rather than fabricating a device match.
+              </p>
+            </div>
+          )}
+
+          {queryLoading ? (
+            <div className="flex h-36 items-center justify-center rounded-xl border border-slate-800 bg-slate-950">
+              <div className="flex items-center gap-2 text-xs text-cyan-400">
+                <RefreshCw size={14} className="animate-spin" />
+                Executing query against graph engine...
+              </div>
+            </div>
+          ) : (
+            <div className="overflow-hidden rounded-xl border border-slate-800 bg-slate-950 p-4">
+              <div className="flex items-center justify-between pb-2 border-b border-slate-800/80 text-[11px] text-slate-400">
+                <span>Result Payload & Graph Attributes</span>
+                <span className="font-mono text-[10px] text-slate-500">JSON Provenance</span>
+              </div>
+              <pre className="mt-3 max-h-64 overflow-y-auto text-[11px] font-mono leading-relaxed text-slate-300 scrollbar-thin scrollbar-thumb-slate-800">
+                {JSON.stringify(queryResult?.results || queryResult || {}, null, 2)}
+              </pre>
+            </div>
+          )}
+        </div>
+      </section>
     </div>
   );
 }

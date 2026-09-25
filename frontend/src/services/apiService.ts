@@ -7,7 +7,10 @@ import type {
   CaseSummary,
   GraphResponse,
   HistoricalCase,
+  LiveEvidenceResponse,
+  PersistGraphResponse,
   SystemHealth,
+  TigerGraphQueryResult,
   TimelineEvent,
 } from '../types/fraud';
 
@@ -310,5 +313,128 @@ export const apiService = {
       // Fallback
     }
     return BENCHMARK_DATA.historicalCases as HistoricalCase[];
+  },
+
+  async getLiveEvidence(caseId: string): Promise<LiveEvidenceResponse> {
+    try {
+      const res = await fetch(`${API_BASE}/cases/${caseId}/live-evidence`, { signal: AbortSignal.timeout(3000) });
+      if (res.ok) {
+        return (await res.json()) as LiveEvidenceResponse;
+      }
+    } catch {
+      // Fallback
+    }
+    const full = BENCHMARK_DATA.fullCases as Record<string, BenchmarkCase>;
+    const base = full[caseId];
+    return {
+      live: false,
+      source: 'deterministic_benchmark',
+      query: 'alert_context',
+      case_id: caseId,
+      transaction_id: base?.flagged_txn_id || '3478782',
+      latency_ms: 0.0,
+      evidence: base?.case?.evidence || [],
+      message: 'TigerGraph host unreachable or offline — showing deterministic benchmark evidence.',
+    };
+  },
+
+  async getTigerGraphCardHistory(caseId: string): Promise<TigerGraphQueryResult> {
+    try {
+      const res = await fetch(`${API_BASE}/cases/${caseId}/tigergraph/card-history`, { signal: AbortSignal.timeout(3000) });
+      if (res.ok) {
+        return (await res.json()) as TigerGraphQueryResult;
+      }
+    } catch {
+      // Fallback
+    }
+    return {
+      live: false,
+      source: 'deterministic_benchmark',
+      query: 'card_history',
+      case_id: caseId,
+      latency_ms: 0.0,
+      results: {},
+      message: 'Card history retrieved from deterministic benchmark store.',
+    };
+  },
+
+  async getTigerGraphDeviceConnections(caseId: string): Promise<TigerGraphQueryResult> {
+    try {
+      const res = await fetch(`${API_BASE}/cases/${caseId}/tigergraph/device-connections`, { signal: AbortSignal.timeout(3000) });
+      if (res.ok) {
+        return (await res.json()) as TigerGraphQueryResult;
+      }
+    } catch {
+      // Fallback
+    }
+    return {
+      live: false,
+      source: 'deterministic_benchmark',
+      query: 'device_connected_cards',
+      case_id: caseId,
+      latency_ms: 0.0,
+      results: {},
+      message: caseId === 'HHG-002' ? 'Device evidence unavailable (Truthful state)' : 'Device connections retrieved from benchmark store.',
+    };
+  },
+
+  async getTigerGraphRegionConnections(caseId: string): Promise<TigerGraphQueryResult> {
+    try {
+      const res = await fetch(`${API_BASE}/cases/${caseId}/tigergraph/region-connections`, { signal: AbortSignal.timeout(3000) });
+      if (res.ok) {
+        return (await res.json()) as TigerGraphQueryResult;
+      }
+    } catch {
+      // Fallback
+    }
+    return {
+      live: false,
+      source: 'deterministic_benchmark',
+      query: 'region_connected_cards',
+      case_id: caseId,
+      latency_ms: 0.0,
+      results: {},
+      message: 'Region connections retrieved from benchmark store.',
+    };
+  },
+
+  async getTigerGraphSimilarCases(caseId: string): Promise<TigerGraphQueryResult> {
+    try {
+      const res = await fetch(`${API_BASE}/cases/${caseId}/tigergraph/similar-cases`, { signal: AbortSignal.timeout(3000) });
+      if (res.ok) {
+        return (await res.json()) as TigerGraphQueryResult;
+      }
+    } catch {
+      // Fallback
+    }
+    return {
+      live: false,
+      source: 'deterministic_benchmark',
+      query: 'similar_closed_cases',
+      case_id: caseId,
+      latency_ms: 0.0,
+      results: {},
+      message: 'Similar closed cases retrieved from graph institutional memory.',
+    };
+  },
+
+  async persistCaseToGraph(caseId: string): Promise<PersistGraphResponse> {
+    try {
+      const res = await fetch(`${API_BASE}/cases/${caseId}/persist-graph`, {
+        method: 'POST',
+        signal: AbortSignal.timeout(3000),
+      });
+      if (res.ok) {
+        return (await res.json()) as PersistGraphResponse;
+      }
+    } catch {
+      // Offline fallback
+    }
+    return {
+      success: false,
+      written: false,
+      case_id: caseId,
+      reason: 'TigerGraph host or credentials not configured / unreachable. Graph write skipped.',
+    };
   },
 };

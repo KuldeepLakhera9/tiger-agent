@@ -199,3 +199,36 @@ export interface HistoricalCase {
   analyst_notes: string;
   actions_taken: string;
 }
+
+export interface LiveEvidenceResponse {
+  live: boolean;
+  source: 'tigergraph' | 'deterministic_benchmark' | string;
+  query: string;
+  case_id: string;
+  transaction_id: string;
+  latency_ms: number;
+  evidence: EvidenceItem[];
+  graph_data?: any;
+  message?: string;
+}
+
+export interface TigerGraphQueryResult {
+  live: boolean;
+  source: string;
+  query: string;
+  case_id: string;
+  latency_ms: number;
+  results: any;
+  message?: string;
+}
+
+export interface PersistGraphResponse {
+  success: boolean;
+  written: boolean;
+  case_id: string;
+  graph_case_id?: string;
+  latency_ms?: number;
+  message?: string;
+  reason?: string;
+}
+
