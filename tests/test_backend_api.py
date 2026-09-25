@@ -149,6 +149,59 @@ class TestBackendAPI(unittest.TestCase):
         self.assertEqual(resp_txn.status_code, 200)
         self.assertEqual(resp_txn.json()["case_id"], "HHG-002")
 
+    def test_live_evidence_endpoint(self):
+        resp = self.client.get("/api/cases/HHG-002/live-evidence")
+        self.assertEqual(resp.status_code, 200)
+        data = resp.json()
+        self.assertIn("live", data)
+        self.assertIn("source", data)
+        self.assertEqual(data["case_id"], "HHG-002")
+        self.assertEqual(data["transaction_id"], "3478782")
+        self.assertEqual(data["query"], "alert_context")
+        self.assertIn("evidence", data)
+
+    def test_tigergraph_card_history_endpoint(self):
+        resp = self.client.get("/api/cases/HHG-002/tigergraph/card-history")
+        self.assertEqual(resp.status_code, 200)
+        data = resp.json()
+        self.assertEqual(data["case_id"], "HHG-002")
+        self.assertEqual(data["card_id"], "C11891-K1")
+        self.assertEqual(data["query"], "card_history")
+        self.assertIn("results", data)
+
+    def test_tigergraph_device_connections_endpoint_hhg002(self):
+        # HHG-002 strictly must return device evidence unavailable
+        resp = self.client.get("/api/cases/HHG-002/tigergraph/device-connections")
+        self.assertEqual(resp.status_code, 200)
+        data = resp.json()
+        self.assertEqual(data["case_id"], "HHG-002")
+        self.assertEqual(data["device_status"], "Device evidence unavailable")
+        self.assertEqual(data["connected_cards"], [])
+
+    def test_tigergraph_region_connections_endpoint(self):
+        resp = self.client.get("/api/cases/HHG-002/tigergraph/region-connections")
+        self.assertEqual(resp.status_code, 200)
+        data = resp.json()
+        self.assertEqual(data["case_id"], "HHG-002")
+        self.assertEqual(data["query"], "region_connected_cards")
+        self.assertIn("results", data)
+
+    def test_tigergraph_similar_cases_endpoint(self):
+        resp = self.client.get("/api/cases/HHG-002/tigergraph/similar-cases")
+        self.assertEqual(resp.status_code, 200)
+        data = resp.json()
+        self.assertEqual(data["case_id"], "HHG-002")
+        self.assertEqual(data["query"], "similar_closed_cases")
+        self.assertIn("results", data)
+
+    def test_persist_case_to_graph_endpoint(self):
+        resp = self.client.post("/api/cases/HHG-002/persist-graph")
+        self.assertEqual(resp.status_code, 200)
+        data = resp.json()
+        self.assertIn("written", data)
+        self.assertIn("case_id", data)
+        self.assertEqual(data["case_id"], "HHG-002")
+
     def test_tigergraph_client_fallback_resilience(self):
         client = TigerGraphClient()
         status = client.get_connection_status()
@@ -161,3 +214,4 @@ class TestBackendAPI(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
