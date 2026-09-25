@@ -1,12 +1,19 @@
 """Explicit verification of HHG-002 requirements."""
 
 import json
+import sys
+import unittest
 from pathlib import Path
+
+# Ensure project root is in sys.path for direct execution and discovery
+root = Path(__file__).resolve().parents[1]
+if str(root) not in sys.path:
+    sys.path.insert(0, str(root))
+
 from backend.case_service import CaseService
 
 
-def test_hhg002():
-    root = Path(__file__).resolve().parents[1]
+def verify_hhg002():
     case_file = root / "cases" / "HHG-002.json"
     assert case_file.is_file(), "HHG-002.json must exist"
 
@@ -47,8 +54,16 @@ def test_hhg002():
     assert "shared device" not in claims, "Forbidden 'shared device' claim in HHG-002 claims"
     assert "shared device" not in case_detail.case.summary.lower(), "Forbidden 'shared device' in summary"
 
-    print("ALL HHG-002 SPECIAL VALIDATION CHECKS PASSED PERFECTLY!")
+
+class TestHHG002Verification(unittest.TestCase):
+    def test_hhg002(self):
+        verify_hhg002()
+
+
+def test_hhg002():
+    verify_hhg002()
 
 
 if __name__ == "__main__":
-    test_hhg002()
+    verify_hhg002()
+    print("ALL HHG-002 SPECIAL VALIDATION CHECKS PASSED PERFECTLY!")

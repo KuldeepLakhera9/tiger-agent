@@ -9,7 +9,7 @@
     "preview": "npm --prefix frontend run preview",
     "backend": "python3 -m uvicorn backend.main:app --reload --port 8000",
     "validate": "python3 agent/validate_answers.py",
-    "test": "python3 agent/validate_answers.py && PYTHONPATH=. python3 tests/test_hhg002_verification.py"
+    "test": "python3 agent/validate_answers.py && python3 -m unittest discover tests"
   },
   "workspaces": [
     "frontend"
