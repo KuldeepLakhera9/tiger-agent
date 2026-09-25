@@ -10,8 +10,11 @@ from .case_service import CaseService
 from .models import (
     AnalyticsOverview,
     BenchmarkCase,
+    CaseActionRequest,
+    CaseActionResponse,
     CaseSummary,
     GraphResponse,
+    InvestigateRequest,
     TimelineEvent,
 )
 from .tigergraph_client import TigerGraphClient
@@ -31,8 +34,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-case_service = CaseService()
 tigergraph_client = TigerGraphClient()
+case_service = CaseService(tigergraph_client=tigergraph_client)
 
 
 @app.get("/api/health")
@@ -58,6 +61,57 @@ def get_case(case_id: str) -> BenchmarkCase:
     item = case_service.get_case(case_id)
     if not item:
         raise HTTPException(status_code=404, detail=f"Case {case_id} not found.")
+    return item
+
+
+@app.post("/api/cases/{case_id}/action", response_model=CaseActionResponse)
+def execute_case_action(case_id: str, req: CaseActionRequest) -> CaseActionResponse:
+    try:
+        return case_service.execute_action(case_id, req)
+    except ValueError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to execute action: {str(e)}")
+
+
+@app.post("/api/cases/{case_id}/lifecycle")
+def update_case_lifecycle(case_id: str, payload: Dict[str, str]) -> Dict[str, Any]:
+    stage = payload.get("stage")
+    actor = payload.get("actor", "Fraud Analyst")
+    if not stage:
+        raise HTTPException(status_code=400, detail="Missing 'stage' in request body.")
+    try:
+        evt = case_service.update_lifecycle_stage(case_id, stage, actor)
+        return {"success": True, "case_id": case_id, "lifecycle_stage": stage.upper(), "audit_event": evt}
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/api/cases/{case_id}/reset")
+def reset_case_state(case_id: str) -> Dict[str, Any]:
+    case_service.reset_case(case_id)
+    item = case_service.get_case(case_id)
+    if not item:
+        raise HTTPException(status_code=404, detail=f"Case {case_id} not found.")
+    return {"success": True, "case_id": case_id, "message": "Case reset to initial benchmark state.", "case": item}
+
+
+@app.post("/api/investigate", response_model=BenchmarkCase)
+def run_investigation(req: InvestigateRequest) -> BenchmarkCase:
+    target_id = req.case_id
+    if not target_id and req.transaction_id:
+        for c in case_service.list_cases():
+            if c.transaction == req.transaction_id:
+                target_id = c.case_id
+                break
+    if not target_id:
+        target_id = "HHG-002"
+
+    item = case_service.get_case(target_id)
+    if not item:
+        raise HTTPException(status_code=404, detail=f"Investigation target {target_id} not found.")
     return item
 
 

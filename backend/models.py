@@ -72,6 +72,7 @@ class BenchmarkCase(BaseModel):
     risk_score: Optional[float] = None
     amount: Optional[float] = None
     channel: Optional[str] = None
+    lifecycle_stage: Optional[str] = "ACTION_RECOMMENDED"
 
 
 class CaseSummary(BaseModel):
@@ -93,6 +94,7 @@ class CaseSummary(BaseModel):
     opened_at: str
     connected_devices_count: int
     connected_cards_count: int
+    lifecycle_stage: Optional[str] = "ACTION_RECOMMENDED"
 
 
 class GraphNode(BaseModel):
@@ -124,10 +126,39 @@ class TimelineEvent(BaseModel):
     timestamp: str
     title: str
     description: str
-    type: str  # alert, query, analysis, policy, action
+    type: str  # alert, query, analysis, policy, action, controlled_action, lifecycle
     ref: str = ""
     badge: Optional[str] = None
     claim: Optional[str] = None
+    actor: Optional[str] = None
+    stage: Optional[str] = None
+    decision: Optional[str] = None
+    recommendation: Optional[str] = None
+
+
+class CaseActionRequest(BaseModel):
+    action: str  # VERIFY_WITH_CUSTOMER, REQUEST_ADDITIONAL_EVIDENCE, BLOCK_CARD, DECLINE_TRANSACTION, APPROVE_ACTION, RESOLVE_CASE, CREATE_CASE
+    actor: str = "Fraud Analyst (L1)"
+    notes: Optional[str] = None
+    approval_route: Optional[str] = None
+    simulated_outcome: Optional[str] = None
+
+
+class CaseActionResponse(BaseModel):
+    success: bool
+    case_id: str
+    action: str
+    new_status: str
+    lifecycle_stage: str
+    message: str
+    audit_event: TimelineEvent
+    what_changed: str = ""
+    is_simulated: bool = True
+
+
+class InvestigateRequest(BaseModel):
+    case_id: Optional[str] = None
+    transaction_id: Optional[str] = None
 
 
 class AnalyticsOverview(BaseModel):

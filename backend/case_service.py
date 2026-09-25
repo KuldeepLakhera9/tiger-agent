@@ -10,6 +10,8 @@ from typing import Any, Dict, List, Optional
 from .models import (
     AnalyticsOverview,
     BenchmarkCase,
+    CaseActionRequest,
+    CaseActionResponse,
     CaseDetail,
     CaseSummary,
     EvidenceItem,
@@ -23,12 +25,13 @@ from .models import (
 
 
 class CaseService:
-    def __init__(self, root_dir: Optional[Path] = None):
+    def __init__(self, root_dir: Optional[Path] = None, tigergraph_client: Optional[Any] = None):
         if root_dir is None:
             self.root_dir = Path(__file__).resolve().parents[1]
         else:
             self.root_dir = root_dir
 
+        self.tigergraph_client = tigergraph_client
         self.cases_dir = self.root_dir / "cases"
         self.data_dir = self.root_dir / "data"
         self.prepared_dir = self.root_dir / "prepared"
@@ -36,6 +39,9 @@ class CaseService:
         self._cases: Dict[str, BenchmarkCase] = {}
         self._case_pack: Dict[str, Dict[str, Any]] = {}
         self._closed_cases: Dict[str, Dict[str, Any]] = {}
+        self._audit_logs: Dict[str, List[TimelineEvent]] = {}
+        self._lifecycle_stages: Dict[str, str] = {}
+        self._case_status_overrides: Dict[str, str] = {}
         self._load_data()
 
     def _load_data(self) -> None:
@@ -143,6 +149,8 @@ class CaseService:
             final_action = item.next_best_actions.final[0] if item.next_best_actions.final else None
             action_name = final_action.action if final_action else "REVIEW"
             action_route = final_action.route if final_action else "auto"
+            status = self._case_status_overrides.get(cid, item.case.status)
+            stage = self._lifecycle_stages.get(cid, "ACTION_RECOMMENDED")
 
             summaries.append(
                 CaseSummary(
@@ -155,7 +163,7 @@ class CaseService:
                     fraud_probability=item.case.fraud_probability,
                     pattern=item.case.pattern,
                     exposure=item.case.exposure_usd,
-                    status=item.case.status,
+                    status=status,
                     sar_required=item.sar.file,
                     next_best_action=action_name,
                     action_route=action_route,
@@ -164,12 +172,22 @@ class CaseService:
                     opened_at=item.opened_at or "",
                     connected_devices_count=len(item.case.connected_device_profiles),
                     connected_cards_count=len(item.case.connected_card_ids),
+                    lifecycle_stage=stage,
                 )
             )
         return summaries
 
     def get_case(self, case_id: str) -> Optional[BenchmarkCase]:
-        return self._cases.get(case_id)
+        item = self._cases.get(case_id)
+        if not item:
+            return None
+        stage = self._lifecycle_stages.get(case_id, "ACTION_RECOMMENDED")
+        status_override = self._case_status_overrides.get(case_id)
+        case_copy = item.model_copy(deep=True)
+        case_copy.lifecycle_stage = stage
+        if status_override:
+            case_copy.case.status = status_override
+        return case_copy
 
     def get_graph(self, case_id: str) -> Optional[GraphResponse]:
         item = self._cases.get(case_id)
@@ -467,7 +485,161 @@ class CaseService:
                 )
             )
 
+        # 6. Append dynamic audit events
+        for extra in self._audit_logs.get(case_id, []):
+            events.append(extra)
+
         return events
+
+    def execute_action(self, case_id: str, req: CaseActionRequest) -> CaseActionResponse:
+        item = self.get_case(case_id)
+        if not item:
+            raise ValueError(f"Case {case_id} not found.")
+
+        import datetime
+        now_str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        action_name = req.action.upper()
+        actor = req.actor or "Fraud Analyst (L1)"
+
+        new_status = item.case.status
+        new_stage = self._lifecycle_stages.get(case_id, "ACTION_RECOMMENDED")
+        what_changed = ""
+        event_title = f"Action Executed: {action_name}"
+        event_desc = req.notes or ""
+
+        if action_name == "VERIFY_WITH_CUSTOMER":
+            new_stage = "REVIEW"
+            new_status = "investigating"
+            event_title = "Controlled Action: Customer Verification (Out-of-Band Challenge)"
+            if not event_desc:
+                event_desc = (
+                    f"Dispatched SMS verification challenge to customer {item.customer_id} regarding transaction #{item.flagged_txn_id} (${item.amount:.2f}). "
+                    f"Simulated cardholder response received: 'Unauthorized online transaction; card is present in wallet but transaction was not recognized.' "
+                    f"Evidence updated: Confirmed unauthorized transaction signal."
+                )
+            what_changed = "Customer verified transaction as unauthorized. Hypothesis of card-not-present fraud confirmed. Case progressed to pending analyst action."
+        elif action_name == "REQUEST_ADDITIONAL_EVIDENCE":
+            new_stage = "EVIDENCE_GATHERED"
+            new_status = "investigating"
+            event_title = "Controlled Action: Telemetry & Carrier Verification"
+            if not event_desc:
+                event_desc = (
+                    f"Requested additional ISP routing and proxy IP classification for transaction #{item.flagged_txn_id}. "
+                    f"Result: High-risk residential proxy subnet flagged without matching cardholder billing coordinates."
+                )
+            what_changed = "Telemetry evidence collected and appended to case record. Uncertainty reduced."
+        elif action_name in ("BLOCK_CARD", "BLOCK_ALL_CARDS"):
+            new_stage = "ACTION_APPROVED"
+            new_status = "closed_fraud"
+            event_title = f"Intervention: Card Block Enforced ({req.approval_route or 'L1'})"
+            if not event_desc:
+                event_desc = (
+                    f"Card {item.card_id} successfully restricted. Authorization declined on all pending channels. "
+                    f"Approved by {actor} under policy rule R2/R5."
+                )
+            what_changed = f"Card {item.card_id} locked. Exposure capped at ${item.case.exposure_usd:.2f}."
+        elif action_name == "DECLINE_TRANSACTION":
+            new_stage = "ACTION_APPROVED"
+            new_status = "closed_fraud"
+            event_title = "Intervention: Authorization Declined"
+            if not event_desc:
+                event_desc = f"Transaction #{item.flagged_txn_id} declined in authorization stream under rule R5."
+            what_changed = f"Transaction #{item.flagged_txn_id} declined. Fraud exposure prevented."
+        elif action_name == "CREATE_CASE":
+            new_stage = "ACTION_APPROVED"
+            new_status = "open"
+            event_title = "Case Management: Formal Investigation Opened"
+            if not event_desc:
+                event_desc = "Internal case formal docket created under policy rule 3a. Assigned to Tier-2 Fraud Ops."
+            what_changed = "Formal docket established in fraud registry."
+        elif action_name == "FILE_REPORT":
+            new_stage = "ACTION_APPROVED"
+            event_title = "Regulatory Action: FinCEN SAR Submitted"
+            if not event_desc:
+                event_desc = "Suspicious Activity Report validated and queued for regulatory FinCEN batch transmission."
+            what_changed = "SAR electronic submission prepared and logged."
+        elif action_name == "APPROVE_ACTION":
+            new_stage = "ACTION_APPROVED"
+            event_title = f"Policy Approval: {actor} Signed Off"
+            if not event_desc:
+                final_act = item.next_best_actions.final[0] if item.next_best_actions.final else None
+                rec_name = final_act.action if final_act else "Action"
+                event_desc = f"Approval authority {actor} approved recommended action '{rec_name}' following review of graph evidence."
+            what_changed = "Recommended action approved by appropriate routing authority."
+        elif action_name in ("RESOLVE_CASE", "CLOSE_NO_FRAUD"):
+            new_stage = "RESOLVED"
+            new_status = "closed_legitimate" if action_name == "CLOSE_NO_FRAUD" else "closed_fraud"
+            event_title = f"Case Resolution: Closed ({new_status})"
+            if not event_desc:
+                event_desc = f"Case investigation concluded and approved for archive by {actor}."
+            what_changed = f"Investigation docket transitioned to {new_status} and resolved."
+        else:
+            new_stage = "ACTION_APPROVED"
+            event_title = f"Action Logged: {action_name}"
+            if not event_desc:
+                event_desc = f"Action {action_name} executed by {actor}."
+            what_changed = f"Action {action_name} applied to case."
+
+        event_id = f"evt-audit-{len(self.get_timeline(case_id)) + 1}"
+        audit_event = TimelineEvent(
+            id=event_id,
+            timestamp=now_str,
+            title=event_title,
+            description=event_desc,
+            type="controlled_action" if "Controlled" in event_title else "action",
+            badge="AUDIT TRAIL",
+            actor=actor,
+            stage=new_stage,
+            decision=action_name,
+            recommendation=item.next_best_actions.final[0].action if item.next_best_actions.final else "REVIEW",
+        )
+
+        if case_id not in self._audit_logs:
+            self._audit_logs[case_id] = []
+        self._audit_logs[case_id].append(audit_event)
+        self._lifecycle_stages[case_id] = new_stage
+        self._case_status_overrides[case_id] = new_status
+
+        return CaseActionResponse(
+            success=True,
+            case_id=case_id,
+            action=action_name,
+            new_status=new_status,
+            lifecycle_stage=new_stage,
+            message=f"Action '{action_name}' recorded successfully. Audit trail and lifecycle updated.",
+            audit_event=audit_event,
+            what_changed=what_changed,
+            is_simulated=True,
+        )
+
+    def update_lifecycle_stage(self, case_id: str, stage: str, actor: str = "Fraud Analyst") -> TimelineEvent:
+        allowed = ["ALERTED", "INVESTIGATING", "EVIDENCE_GATHERED", "REVIEW", "ACTION_RECOMMENDED", "ACTION_APPROVED", "RESOLVED"]
+        stage_upper = stage.upper()
+        if stage_upper not in allowed:
+            raise ValueError(f"Invalid stage '{stage}'. Must be one of {allowed}")
+
+        self._lifecycle_stages[case_id] = stage_upper
+        import datetime
+        now_str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        evt = TimelineEvent(
+            id=f"evt-stage-{len(self.get_timeline(case_id)) + 1}",
+            timestamp=now_str,
+            title=f"Lifecycle Transition: {stage_upper}",
+            description=f"Investigation transitioned to {stage_upper} stage by {actor}.",
+            type="lifecycle",
+            badge="LIFECYCLE",
+            actor=actor,
+            stage=stage_upper,
+        )
+        if case_id not in self._audit_logs:
+            self._audit_logs[case_id] = []
+        self._audit_logs[case_id].append(evt)
+        return evt
+
+    def reset_case(self, case_id: str) -> None:
+        self._audit_logs.pop(case_id, None)
+        self._lifecycle_stages.pop(case_id, None)
+        self._case_status_overrides.pop(case_id, None)
 
     def get_historical_cases(self) -> List[Dict[str, Any]]:
         # Return unique closed cases referenced in similar_prior_cases across the 20 benchmark cases
