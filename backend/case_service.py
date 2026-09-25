@@ -742,3 +742,261 @@ class CaseService:
             sar_breakdown=sar_breakdown,
             status_breakdown=status_breakdown,
         )
+
+    def get_live_evidence(self, case_id: str) -> Optional[Dict[str, Any]]:
+        item = self.get_case(case_id)
+        if not item:
+            return None
+
+        flagged_txn_id = item.flagged_txn_id or ""
+        tg = self.tigergraph_client
+
+        if tg and tg.is_configured:
+            query_res = tg.run_query("alert_context", {"txn_id": flagged_txn_id})
+            if query_res and query_res.get("status") == "success":
+                return {
+                    "live": True,
+                    "source": "tigergraph",
+                    "query": "alert_context",
+                    "case_id": case_id,
+                    "transaction_id": flagged_txn_id,
+                    "latency_ms": query_res.get("latency_ms", 0.0),
+                    "evidence": item.case.evidence,
+                    "graph_data": query_res.get("results", []),
+                    "message": "Live TigerGraph alert_context query executed successfully.",
+                }
+
+        # Deterministic benchmark fallback
+        return {
+            "live": False,
+            "source": "deterministic_benchmark",
+            "query": "alert_context",
+            "case_id": case_id,
+            "transaction_id": flagged_txn_id,
+            "latency_ms": 0.0,
+            "evidence": item.case.evidence,
+            "graph_data": None,
+            "message": "TigerGraph unavailable or host not configured — showing deterministic benchmark evidence.",
+        }
+
+    def get_card_history_query(self, case_id: str) -> Optional[Dict[str, Any]]:
+        item = self.get_case(case_id)
+        if not item:
+            return None
+        card_id = item.card_id or ""
+        tg = self.tigergraph_client
+
+        if tg and tg.is_configured and card_id:
+            query_res = tg.run_query("card_history", {"card_id": card_id})
+            if query_res and query_res.get("status") == "success":
+                return {
+                    "live": True,
+                    "source": "tigergraph",
+                    "query": "card_history",
+                    "case_id": case_id,
+                    "card_id": card_id,
+                    "latency_ms": query_res.get("latency_ms", 0.0),
+                    "results": query_res.get("results", []),
+                }
+
+        # Fallback
+        return {
+            "live": False,
+            "source": "deterministic_benchmark",
+            "query": "card_history",
+            "case_id": case_id,
+            "card_id": card_id,
+            "latency_ms": 0.0,
+            "results": {
+                "card_id": card_id,
+                "affected_transactions": item.case.affected_txn_ids,
+                "exposure_usd": item.case.exposure_usd,
+                "pattern": item.case.pattern,
+            },
+        }
+
+    def get_device_connections_query(self, case_id: str) -> Optional[Dict[str, Any]]:
+        item = self.get_case(case_id)
+        if not item:
+            return None
+
+        # HHG-002 strictly has NO device evidence
+        if case_id == "HHG-002" or not item.case.connected_device_profiles:
+            return {
+                "live": False,
+                "source": "deterministic_benchmark",
+                "query": "device_connected_cards",
+                "case_id": case_id,
+                "device_id": None,
+                "device_status": "Device evidence unavailable",
+                "connected_cards": [],
+                "connected_device_profiles": [],
+                "latency_ms": 0.0,
+                "message": "Device evidence unavailable; no usable identity record is attached to the flagged transaction.",
+            }
+
+        dev_id = item.case.connected_device_profiles[0]
+        tg = self.tigergraph_client
+        if tg and tg.is_configured and dev_id:
+            query_res = tg.run_query("device_connected_cards", {"device_id": dev_id})
+            if query_res and query_res.get("status") == "success":
+                return {
+                    "live": True,
+                    "source": "tigergraph",
+                    "query": "device_connected_cards",
+                    "case_id": case_id,
+                    "device_id": dev_id,
+                    "device_status": "Available",
+                    "latency_ms": query_res.get("latency_ms", 0.0),
+                    "results": query_res.get("results", []),
+                }
+
+        return {
+            "live": False,
+            "source": "deterministic_benchmark",
+            "query": "device_connected_cards",
+            "case_id": case_id,
+            "device_id": dev_id,
+            "device_status": "Available",
+            "connected_cards": item.case.connected_card_ids,
+            "connected_device_profiles": item.case.connected_device_profiles,
+            "latency_ms": 0.0,
+        }
+
+    def get_region_connections_query(self, case_id: str) -> Optional[Dict[str, Any]]:
+        item = self.get_case(case_id)
+        if not item:
+            return None
+
+        region_id = ""
+        for ev in item.case.evidence:
+            if "billing region" in ev.claim.lower():
+                for ent in ev.entity_ids:
+                    if ent not in (item.flagged_txn_id, item.customer_id, item.card_id):
+                        region_id = ent
+                        break
+
+        tg = self.tigergraph_client
+        if tg and tg.is_configured and region_id:
+            query_res = tg.run_query("region_connected_cards", {"region_id": region_id})
+            if query_res and query_res.get("status") == "success":
+                return {
+                    "live": True,
+                    "source": "tigergraph",
+                    "query": "region_connected_cards",
+                    "case_id": case_id,
+                    "region_id": region_id,
+                    "latency_ms": query_res.get("latency_ms", 0.0),
+                    "results": query_res.get("results", []),
+                }
+
+        return {
+            "live": False,
+            "source": "deterministic_benchmark",
+            "query": "region_connected_cards",
+            "case_id": case_id,
+            "region_id": region_id or "Not Specified",
+            "latency_ms": 0.0,
+            "results": {
+                "region_id": region_id,
+                "connected_cards": item.case.connected_card_ids,
+            },
+        }
+
+    def get_similar_cases_query(self, case_id: str) -> Optional[Dict[str, Any]]:
+        item = self.get_case(case_id)
+        if not item:
+            return None
+
+        card_id = item.card_id or ""
+        device_id = item.case.connected_device_profiles[0] if item.case.connected_device_profiles else ""
+        tg = self.tigergraph_client
+
+        if tg and tg.is_configured and card_id:
+            query_res = tg.run_query("similar_closed_cases", {"card_id": card_id, "device_id": device_id})
+            if query_res and query_res.get("status") == "success":
+                return {
+                    "live": True,
+                    "source": "tigergraph",
+                    "query": "similar_closed_cases",
+                    "case_id": case_id,
+                    "card_id": card_id,
+                    "device_id": device_id,
+                    "latency_ms": query_res.get("latency_ms", 0.0),
+                    "results": query_res.get("results", []),
+                }
+
+        # Fallback
+        hist_details = []
+        for cc_id in item.case.similar_prior_cases:
+            info = self._closed_cases.get(cc_id, {})
+            hist_details.append({
+                "case_id": cc_id,
+                "outcome": info.get("outcome", "confirmed_fraud"),
+                "pattern": info.get("pattern", "card_not_present_fraud"),
+                "exposure_usd": info.get("exposure_usd", 0.0),
+                "notes": info.get("analyst_notes", ""),
+            })
+
+        return {
+            "live": False,
+            "source": "deterministic_benchmark",
+            "query": "similar_closed_cases",
+            "case_id": case_id,
+            "card_id": card_id,
+            "device_id": device_id,
+            "latency_ms": 0.0,
+            "results": hist_details,
+        }
+
+    def persist_case_to_graph(self, case_id: str) -> Dict[str, Any]:
+        item = self.get_case(case_id)
+        if not item:
+            raise ValueError(f"Case {case_id} not found.")
+
+        tg = self.tigergraph_client
+        payload = {
+            "case_id": case_id,
+            "customer_id": item.customer_id,
+            "card_id": item.card_id,
+            "flagged_txn_id": item.flagged_txn_id,
+            "opened_at": item.opened_at,
+            "trigger_type": item.trigger_type,
+            "trigger_text": item.trigger_text,
+            "risk_score": item.risk_score,
+            "status": item.case.status,
+            "verdict": item.case.verdict,
+            "fraud_probability": item.case.fraud_probability,
+            "pattern": item.case.pattern,
+            "exposure_usd": item.case.exposure_usd,
+            "summary": item.case.summary,
+        }
+
+        if tg and tg.is_configured:
+            result = tg.persist_fraud_case(case_id, payload)
+            if result.get("success"):
+                import datetime
+                now_str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                evt = TimelineEvent(
+                    id=f"evt-graph-write-{len(self.get_timeline(case_id)) + 1}",
+                    timestamp=now_str,
+                    title="Graph Memory: FraudCase Persisted",
+                    description=f"Case {case_id} written to TigerGraph as vertex {result.get('graph_case_id')} with INVESTIGATES and CASE_ON_CARD edges.",
+                    type="action",
+                    badge="TIGERGRAPH WRITE",
+                    actor="System Agent",
+                    decision="PERSIST_GRAPH",
+                )
+                if case_id not in self._audit_logs:
+                    self._audit_logs[case_id] = []
+                self._audit_logs[case_id].append(evt)
+                return result
+
+        # If TigerGraph not configured or unreachable: truthful report
+        return {
+            "success": False,
+            "written": False,
+            "case_id": case_id,
+            "reason": "TigerGraph is not configured or host is unreachable. Graph write skipped.",
+        }
+

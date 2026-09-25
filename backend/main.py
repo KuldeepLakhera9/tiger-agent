@@ -137,6 +137,56 @@ def get_case_evidence(case_id: str) -> Dict[str, Any]:
     }
 
 
+@app.get("/api/cases/{case_id}/live-evidence")
+def get_case_live_evidence(case_id: str) -> Dict[str, Any]:
+    data = case_service.get_live_evidence(case_id)
+    if not data:
+        raise HTTPException(status_code=404, detail=f"Case {case_id} not found.")
+    return data
+
+
+@app.get("/api/cases/{case_id}/tigergraph/card-history")
+def get_case_card_history_query(case_id: str) -> Dict[str, Any]:
+    data = case_service.get_card_history_query(case_id)
+    if not data:
+        raise HTTPException(status_code=404, detail=f"Case {case_id} not found.")
+    return data
+
+
+@app.get("/api/cases/{case_id}/tigergraph/device-connections")
+def get_case_device_connections_query(case_id: str) -> Dict[str, Any]:
+    data = case_service.get_device_connections_query(case_id)
+    if not data:
+        raise HTTPException(status_code=404, detail=f"Case {case_id} not found.")
+    return data
+
+
+@app.get("/api/cases/{case_id}/tigergraph/region-connections")
+def get_case_region_connections_query(case_id: str) -> Dict[str, Any]:
+    data = case_service.get_region_connections_query(case_id)
+    if not data:
+        raise HTTPException(status_code=404, detail=f"Case {case_id} not found.")
+    return data
+
+
+@app.get("/api/cases/{case_id}/tigergraph/similar-cases")
+def get_case_similar_cases_query(case_id: str) -> Dict[str, Any]:
+    data = case_service.get_similar_cases_query(case_id)
+    if not data:
+        raise HTTPException(status_code=404, detail=f"Case {case_id} not found.")
+    return data
+
+
+@app.post("/api/cases/{case_id}/persist-graph")
+def persist_case_to_graph(case_id: str) -> Dict[str, Any]:
+    try:
+        return case_service.persist_case_to_graph(case_id)
+    except ValueError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to persist case to TigerGraph: {str(e)}")
+
+
 @app.get("/api/cases/{case_id}/timeline", response_model=List[TimelineEvent])
 def get_case_timeline(case_id: str) -> List[TimelineEvent]:
     timeline = case_service.get_timeline(case_id)
